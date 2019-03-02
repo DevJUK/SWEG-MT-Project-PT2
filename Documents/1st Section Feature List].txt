@@ -1,0 +1,62 @@
+Player Controls:
+First Person
+Mouse Keybord / Controller (Can be changed at any point in menu)
+
+
+Player Dialog:
+Converstaion with friendly people
+Audio and subtitles
+Some mutiple choices/ some forced 
+
+
+Player Traits:
+Die if Health = 0
+Crazy if Sanity = 0 (Screen goes black)
+10 item Inventory (Can loose items)
+Can Sneak
+
+NPCS:
+3 NPC's (2 Ground floor, 1 Upper)
+Die if Health = 0
+Crazy if Sanity = 0
+Some friendly (give items)
+Some Neutral (trade items)
+Some Unfreindly ( Ignore player)
+No clear goal for NPC's
+Ground floor NPC's only go to Upper floor once player has met the guy on Upper
+NPC's can unlock doors if they have key
+Effects by Events
+
+Enviroment Outside:
+Raining (Can be heard and seen)
+Thunder and lightening (Can be heard and seen)
+Dark outside (Night)
+
+Enviroment Inside:
+3 floors (Ground, Upper, Basement)
+Windows can be opened or closed
+Curtains can be pulled across windows
+Lighting inside was good
+Little light in Basement
+Open doors stay open
+Trap Door on ground (locked) [Goes to basement]
+Some doors locked (Keys need to be found)
+
+Events:
+When entering a room, chnace of finding Items, Spirits or getting attacked
+Some events allert NPC's (maybe effect their Sanity)
+Events can make player/npcs stronger or weaker
+if its dark more chnace of Sanity going down
+Can meet NPC's in rooms
+Events can happen to NPC's
+
+Items:
+Flashlight - Left Hand - (Can be found) [Used in Basement]
+Breakable Items (Plates, Vases, ect) [Maybe reduces Sanity of NPC's / Angers Spirits]
+Items can be lost
+Some Items are 2 handed
+Keys (can be found in drawers, vases, chest and by NPC's)
+
+
+
+

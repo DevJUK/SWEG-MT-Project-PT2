@@ -1,0 +1,65 @@
+Room A - The Arsenal 
+Setting - Weapons all around (Guns, Bats, Swords), fightijg dummies
+Event - Left hand of the player starts to "Itch" and "Burn". Player looses controll of movement and screams while clutching the hand. The hand begins to move towards the player neck.
+The player has 3 options 
+a - chop the hand off
+b - break hand 
+c - keep hand
+We chose option C
+-2 Sanity 
++1 Strength
+We feel a green slime aorund our leg, we kick it off us
+-1 Strength
+
+Room B - Body Room
+Setting - Piles of Bodies and Body Parts (Legs, arms, head ect) and a TV
+Event - We hear a crackling of static, the TV turns on. A Child is shown playing, she truns to the screen
+"Play with me" the child says 
+The screen then turns black. When the player trys to leave the girl starts to stare at us again and we fade out. we open our eyes and see a pathway. there is 2 ways 
+a - a chair with a noose (If player chooses this the game ends with the player comiting suicide
+b - light we can walk into (If player chooses this we teleport back into the room under some of the bodies)
+We chose option B 
+
+Room C - Locked
+Event - door has a face on it saying "Tell me the password and I will let you in"
+
+Room D - Research Lab
+Setting - Xrays, microscopes, memos, notes, chemestry equiptment, Cyan Mirror
+Event - Mirror asks for a "sacrifice"
+"Give me a FUCKING Sacrifice" Mirror
+We decided to throw monkey into the Mirror
+"fuck you" says the Monkey
+The Mirror then spits out a black box that is sealed, we take it. We also notice in the room is a recipe for a Invisability Potion 
+
+Room E - Door is Locked
+Event - Steve the book checks for us 
+
+Room F - The Balcony 
+Setting - Book on a stand 
+Event - "take me with you" says the book
+We pick it up 
+"What is your name?" we ask
+"Steve" the book says 
+
+Room G - Toy Room
+Setting - Toys everywhere (blocks, horses, teddies) Bed, desks 
+Event - Hear a clink, and a gear shifting. the player falls to the floor and a blade flys above us and hits the wall
+-2 Sanity
+
+Room H - Library 
+Setting - Books, bookshevles, tables, chairs, desks 
+Event - player finds a shit box, opens and finds flashlight. Player can see book of chemical equiptment and atonomty of cats and rats 
+
+Room I - Church
+Setting - benches, alter
+Event - 
+
+
+Room J
+
+
+Room K
+
+
+Upper Foyer
+
