@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/OutsideScene.unity
     guid: 4c0a06d9ce590da4ba6790bfa731dd5d
   - enabled: 1
+    path: Assets/Scenes/BasementScene.unity
+    guid: f09ea11edc1b3cc4382a12d62e982fa0
+  - enabled: 1
     path: Assets/Scenes/GroundFloorScene.unity
     guid: 9b250fad6d545d14ba0ea41ee6256d1b
   - enabled: 1
