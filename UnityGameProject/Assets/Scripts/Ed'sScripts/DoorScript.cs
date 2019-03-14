@@ -46,9 +46,9 @@ public class DoorScript : MonoBehaviour
 					G.GetComponent<Animator>().SetTrigger("DoorClosed");
 				}
 
-				foreach (GameObject G in GetComponentsInChildren<GameObject>())
+				foreach (Animator G in gameObject.transform.GetComponentInChildren<Animator>())
 				{
-					G.GetComponent<Animator>().SetTrigger("DoorClosed");
+					G.SetTrigger("DoorClosed");
 				}
 
 				DoorOpen = false;
