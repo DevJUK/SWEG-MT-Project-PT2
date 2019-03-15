@@ -32,11 +32,15 @@ public class InventoryScript : MonoBehaviour
 	internal bool PanelOpen;
 	internal bool PrefabMade;
 
+	private ThrowableItemScript ThrowScript;
+	private InvButtonScript InvButton;
 
 	private void Start()
 	{
 		Player = GameObject.FindGameObjectWithTag("Player");
 		Events = FindObjectOfType<EventSystem>().GetComponent<EventSystem>();
+		ThrowScript = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<ThrowableItemScript>();
+		InvButton = GameObject.Find("InventoryUIElements").GetComponent<InvButtonScript>();
 	}
 
 
@@ -51,40 +55,41 @@ public class InventoryScript : MonoBehaviour
 		{
 			foreach (RaycastResult item in Results)                         // search through the results
 			{
-				foreach (Item i in GetComponent<InventoryScript>().items)                         // search the items in the inveontry
+				foreach (Image I in ItemImages)
 				{
-					if (NumberOfPresses == 2)
+					if (item.gameObject == I.gameObject)
 					{
-						OpenItem();
-						NumberOfPresses = 0;
-					}
-					else
-					{
-						if (i == null)                                          // if NULL then break out of the loop (avoids NullExepctionErrors)
+						Debug.Log(I.gameObject.GetComponent<Image>().sprite);
+
+
+						if (I.gameObject.GetComponent<Image>().sprite != null)
 						{
-							continue;
+							foreach (Item Thing in items)
+							{
+								if ((Thing != null) && (I.gameObject.GetComponent<Image>().sprite == Thing.ItemInvImage))
+								{
+									SelectedItem = Thing;
+								}
+							}
 						}
 						else
 						{
-							if (SelectedItem == null)
-							{
-								SelectedItem = i;
-
-								//foreach (Image i2 in ItemImages)
-								//{
-								//	if (i2.sprite == SelectedItem.ItemSprite)
-								//	{
-								//		i2.transform.parent.GetComponentInChildren<Image>().color = Color.yellow;
-								//		break;
-								//	}
-								//	else
-								//	{
-								//		continue;
-								//	}
-								//}
-							}
-							NumberOfPresses++;
+							SelectedItem = null;
 						}
+					}
+				}
+
+
+
+				for (int i = 0; i < NumberItemSlots; i++)
+				{
+					if ((SelectedItem != null) && (ItemImages[i].sprite == SelectedItem.ItemInvImage))
+					{
+						ItemImages[i].gameObject.transform.parent.GetComponentInChildren<Image>().color = Color.yellow;
+					}
+					else
+					{
+						ItemImages[i].gameObject.transform.parent.GetComponentInChildren<Image>().color = Color.white;
 					}
 				}
 			}
@@ -145,8 +150,15 @@ public class InventoryScript : MonoBehaviour
 			}
 
 			Input.gameObject.SetActive(true);
-			Input.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-			Input.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+
+			if (Input.gameObject.GetComponent<SpriteRenderer>())
+			{
+				Input.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+			}
+			else if (Input.gameObject.GetComponent<PolygonCollider2D>())
+			{
+				Input.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+			}
 		}
     }
 
@@ -248,7 +260,6 @@ public class InventoryScript : MonoBehaviour
 			items[i] = null;
 			ItemImages[i].sprite = null;                           // removes the image for the inventory slot, reutrning it to null
 			ItemImages[i].enabled = false;
-			//ItemImages[i].GetComponent<Stack>().ResetStack();
 		}
 	}
 
@@ -271,5 +282,21 @@ public class InventoryScript : MonoBehaviour
 				return;
 			}
 		}
+	}
+
+	public void EquipItem()
+	{
+		if (ThrowScript.ItemHeld == null)
+		{
+			ThrowScript.ItemHeld = SelectedItem.gameObject;
+			SelectedItem.RemoveItemFromInv();
+			InvButton.OpenInv();
+		}
+	}
+
+	public void DropItem()
+	{
+		SelectedItem.RemoveItemFromInv();
+		InvButton.OpenInv();
 	}
 }
