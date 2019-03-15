@@ -13708,7 +13708,7 @@ Transform:
   m_GameObject: {fileID: 319968699}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -51.77, y: -7.3037076, z: -112.29732}
-  m_LocalScale: {x: 0.43268, y: 1, z: 209.81744}
+  m_LocalScale: {x: 0.43268, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2093626611}
   m_RootOrder: 3
@@ -20375,7 +20375,7 @@ PrefabInstance:
     - target: {fileID: 2258449332097127767, guid: 956539c4ebe48d740a3e2923f2fdef4c,
         type: 3}
       propertyPath: field of view
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 540847310899648468, guid: 956539c4ebe48d740a3e2923f2fdef4c,
         type: 3}
@@ -33253,6 +33253,62 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1056649407}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &977509756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 977509758}
+  - component: {fileID: 977509757}
+  m_Layer: 0
+  m_Name: RoomAllocationSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &977509757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977509756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad67c5188647e3e40af82b6324b48f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NPCS:
+  - Cally
+  - Miranda
+  - PoliceMan
+  - Witch
+  - Cat
+  - Kyle
+  CallyRoom: 0
+  MirandaRoom: 0
+  PoliceManRoom: 0
+  WitchRoom: 0
+  CatRoom: 0
+  KyleRoom: 0
+--- !u!4 &977509758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977509756}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.139559, y: 1.0778449, z: -22.111832}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &980129782
 GameObject:
   m_ObjectHideFlags: 0
