@@ -10,7 +10,7 @@ public class Item : MonoBehaviour
 	public Sprite ItemSprite;
 	public Sprite ItemInvImage;
 	public GameObject ItemObject;
-	public bool IsCollectable;
+	public bool IsNotCollectable;
 
 	private InventoryScript InvScript;
 
@@ -25,7 +25,11 @@ public class Item : MonoBehaviour
 	public void ItemSetup()
 	{
 		ItemObject = gameObject;
-		ItemName = gameObject.name;
+
+		if (ItemName == null)
+		{
+			ItemName = gameObject.name;
+		}
 
 		//if (gameObject.GetComponent<Image>() == null)
 		//{
@@ -40,7 +44,10 @@ public class Item : MonoBehaviour
 
 	public void AddToInv(Item i)
 	{
-		InvScript.AddItem(i);
+		if (!IsNotCollectable)
+		{
+			InvScript.AddItem(i);
+		}
 	}
 
 	public void RemoveItemFromInv()

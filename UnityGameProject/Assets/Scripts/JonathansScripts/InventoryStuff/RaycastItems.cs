@@ -84,7 +84,7 @@ public class RaycastItems : MonoBehaviour
 					}
 					else
 					{
-						if (Hit.transform.gameObject.GetComponent<Item>())
+						if (!Hit.transform.gameObject.GetComponent<Item>().IsNotCollectable)
 						{
 							ThrowScript.ItemHeld = Hit.transform.gameObject;
 						}
