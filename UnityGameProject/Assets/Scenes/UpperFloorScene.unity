@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2575,6 +2575,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 929633020}
     m_Modifications:
+    - target: {fileID: 100000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
+      propertyPath: m_Name
+      value: DoorwayFinal
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.66415
@@ -2618,10 +2622,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
-      propertyPath: m_Name
-      value: DoorwayFinal
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
       propertyPath: m_Materials.Array.data[2]
@@ -6710,6 +6710,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1119465601}
     m_Modifications:
+    - target: {fileID: 100000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
+      propertyPath: m_Name
+      value: DoorwayFinal
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.142038
@@ -6753,10 +6757,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
-      propertyPath: m_Name
-      value: DoorwayFinal
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
       propertyPath: m_Materials.Array.data[2]
@@ -17591,7 +17591,7 @@ Transform:
   - {fileID: 642447976}
   - {fileID: 798735457}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &474518421
 PrefabInstance:
@@ -41694,6 +41694,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 311149514}
     m_Modifications:
+    - target: {fileID: 100000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
+      propertyPath: m_Name
+      value: DoorwayFinal (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.770298
@@ -41737,10 +41741,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
-      propertyPath: m_Name
-      value: DoorwayFinal (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
       propertyPath: m_Materials.Array.data[2]
@@ -44209,7 +44209,7 @@ Transform:
   - {fileID: 1860613114}
   - {fileID: 51481673}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1273276457
 PrefabInstance:
@@ -45198,7 +45198,7 @@ Transform:
   - {fileID: 1813498202}
   - {fileID: 662444148}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1317279767
 PrefabInstance:
@@ -61633,6 +61633,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 711690861827639018, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 406987190, guid: 956539c4ebe48d740a3e2923f2fdef4c, type: 3}
       propertyPath: UI
       value: 
@@ -61655,11 +61660,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.23999977
-      objectReference: {fileID: 0}
-    - target: {fileID: 711690861827639018, guid: 956539c4ebe48d740a3e2923f2fdef4c,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 956539c4ebe48d740a3e2923f2fdef4c, type: 3}
@@ -73735,6 +73735,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 311149514}
     m_Modifications:
+    - target: {fileID: 100000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
+      propertyPath: m_Name
+      value: DoorwayFinal
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.2152
@@ -73778,10 +73782,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
-      propertyPath: m_Name
-      value: DoorwayFinal
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: dd179b4181d00024eb986f14cc5372dc, type: 3}
       propertyPath: m_Materials.Array.data[2]

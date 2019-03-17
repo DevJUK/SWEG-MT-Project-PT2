@@ -85,7 +85,7 @@ MonoBehaviour:
   Range: 10
   UI: {fileID: 0}
   PickupScript: {fileID: 0}
-  NPCInteractionScrpt: {fileID: 0}
+  NPCInteractionScrpt: {fileID: 376626674091198560}
   MirrorTipScript: {fileID: 0}
   NameofNPCHit: 
 --- !u!1 &1021139265
@@ -2483,8 +2483,11 @@ GameObject:
   - component: {fileID: 540847310899648465}
   - component: {fileID: 540847310899648494}
   - component: {fileID: 5611466348981611069}
+  - component: {fileID: 5857350158885154158}
   - component: {fileID: 540847310899648492}
   - component: {fileID: 540847310899648490}
+  - component: {fileID: 376626674091198560}
+  - component: {fileID: 376626674091198561}
   m_Layer: 0
   m_Name: Cally V1 Model@Idle
   m_TagString: Player
@@ -2499,8 +2502,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540847310899648491}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 52.919876, y: -6.981983, z: 6.9599934}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 55.443, y: -50.71, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 540847310899350479}
@@ -2513,7 +2516,7 @@ Transform:
   - {fileID: 540847310899350111}
   m_Father: {fileID: 2258449333010683322}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &540847310892393519
 Animator:
   serializedVersion: 3
@@ -2546,13 +2549,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TriggerBox: {fileID: 0}
-  Camera1: {fileID: 0}
+  Camera1: {fileID: 2258449332097127762}
   Camera2: {fileID: 0}
   Fire: {fileID: 0}
   Boolon: {fileID: 0}
   MovementScript: {fileID: 540847310899648464}
   MoveStart: {fileID: 0}
-  stopMouse: {fileID: 0}
+  stopMouse: {fileID: 540847310899648494}
   MoveStop: {fileID: 0}
 --- !u!114 &540847310899648464
 MonoBehaviour:
@@ -2618,6 +2621,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad1671b325d2464b8343d0a8c9400f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5857350158885154158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540847310899648491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaf0d999575516041a4fe74741c63af4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RAS: {fileID: 0}
+  Character: Cally
+  CharacterID: 0
+  RoomIn: 
 --- !u!136 &540847310899648492
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2648,6 +2667,96 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &376626674091198560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540847310899648491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a742a43df03d34888297efb63b2c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Interacting: 0
+  AudioManager: {fileID: 0}
+  InteractionCanvas: {fileID: 0}
+  PlayerTalksFirst: 0
+  PlayerTalking: 0
+  WhosTalking: {fileID: 0}
+  PlayerName: Cally
+  NPCName: 
+  DialogueBox: {fileID: 0}
+  PlayerDialogue:
+  - '#Landing'
+  - Who are you?
+  - '#Switch'
+  - '#Landing'
+  - "I\u2019m Cally, this was my aunt\u2019s house"
+  - '#Switch'
+  - '#Landing'
+  - Sure
+  - '#Switch'
+  - '#Landing'
+  - A week ago, I received a letter at my house, it had a key inside of it
+  - '#Switch'
+  - '#Landing'
+  - An aunt of mine, though I never met her
+  - '#Switch'
+  - '#Landing'
+  - "I don\u2019t know"
+  - '#Switch'
+  - '#Landing'
+  - As far as I know yes
+  - '#Switch'
+  - '#End'
+  - Who are you?
+  - '#Switch'
+  - '#Landing'
+  - "It\u2019s my house"
+  - Well I inherited it recently
+  - '#Switch'
+  - '#Landing'
+  - My aunt lived here
+  - '#Switch'
+  - '#End'
+  DialogueOptionCanvas: {fileID: 0}
+  NPCDialogueScrpt: {fileID: 0}
+  DialoguePath: 0
+  StartingDialoguePath: 0
+  CurrentPlayerDialoguePath: 0
+  CurrentNPCDialoguePath: 0
+  LastDialoguePath: 0
+  CharNo: 0
+  DialogueValue: 
+  PrintSentenceInOneGo: 0
+  CoroutineStarted: 0
+  CoroutineDelay: 0.03
+  ConversationStart: 0
+  EndOfSentence: 0
+  NewConversation: 0
+  PrintingDialogue: 0
+  FirstSwitch: 0
+  InitialPlayerLine: 0
+  InitialNPCLine: 0
+--- !u!114 &376626674091198561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540847310899648491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79fef4460b778f408be391d97d1a2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerBox: {fileID: 0}
+  Boolon: {fileID: 0}
+  MovementScript: {fileID: 540847310899648464}
+  stopMouse: {fileID: 540847310899648494}
+  MoveStop: {fileID: 0}
 --- !u!1 &540847310899648493
 GameObject:
   m_ObjectHideFlags: 0
@@ -3148,8 +3257,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2258449332097127762}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.020000458, y: 1.4920001, z: 0.23999977}
+  m_LocalRotation: {x: -0.04363127, y: -0.09305777, z: 0.004083831, w: -0.9946959}
+  m_LocalPosition: {x: -49.11332, y: 1.5106392, z: -30.609875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 711690861827639018}

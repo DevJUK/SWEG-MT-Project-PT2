@@ -12933,7 +12933,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &249039040
 Transform:
   m_ObjectHideFlags: 0
@@ -14999,11 +14999,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319968699}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30.23, y: -11.431, z: -23.22}
+  m_LocalPosition: {x: -30.23, y: -11.63159, z: -23.220499}
   m_LocalScale: {x: 0.43268, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2093626611}
-  m_RootOrder: 3
+  m_Father: {fileID: 455589629}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!154 &319968701
 TerrainCollider:
@@ -18604,6 +18604,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floorx9 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7486338232240096402, guid: 510388ca5dc0f0a4d850d83aa797511d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2698604824901172030, guid: 510388ca5dc0f0a4d850d83aa797511d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18866,7 +18871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &455589629
 Transform:
   m_ObjectHideFlags: 0
@@ -18892,6 +18897,7 @@ Transform:
   - {fileID: 787319431}
   - {fileID: 2042391993}
   - {fileID: 1256778905}
+  - {fileID: 319968700}
   m_Father: {fileID: 2093626611}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22403,7 +22409,7 @@ PrefabInstance:
     - target: {fileID: 2258449333010683323, guid: 956539c4ebe48d740a3e2923f2fdef4c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2258449333010683322, guid: 956539c4ebe48d740a3e2923f2fdef4c,
         type: 3}
@@ -22473,6 +22479,31 @@ PrefabInstance:
       propertyPath: PickupScript
       value: 
       objectReference: {fileID: 1784052406}
+    - target: {fileID: 2258449332097127765, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.020000458
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258449332097127765, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.4920001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258449332097127765, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.23999977
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857350158885154158, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: Character
+      value: Cally
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857350158885154158, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: RAS
+      value: 
+      objectReference: {fileID: 977509757}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 956539c4ebe48d740a3e2923f2fdef4c, type: 3}
 --- !u!1001 &592811927
@@ -29091,6 +29122,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floorx9 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7486338232240096402, guid: 510388ca5dc0f0a4d850d83aa797511d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2698604824901172030, guid: 510388ca5dc0f0a4d850d83aa797511d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30084,7 +30120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &787319431
 Transform:
   m_ObjectHideFlags: 0
@@ -30661,6 +30697,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Floorx9 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486338232240096402, guid: 510388ca5dc0f0a4d850d83aa797511d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2698604824901172030, guid: 510388ca5dc0f0a4d850d83aa797511d,
         type: 3}
@@ -33694,6 +33735,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floorx9 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 7486338232240096402, guid: 510388ca5dc0f0a4d850d83aa797511d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2698604824901172030, guid: 510388ca5dc0f0a4d850d83aa797511d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36547,12 +36593,35 @@ MonoBehaviour:
   - Witch
   - Cat
   - Kyle
-  CallyRoom: 0
-  MirandaRoom: 0
-  PoliceManRoom: 0
-  WitchRoom: 0
-  CatRoom: 0
-  KyleRoom: 0
+  Rooms:
+  - GrdEnt
+  - GrdStr
+  - GrdA
+  - GrdB
+  - GrdC
+  - GrdD
+  - GrdE
+  - GrdF
+  - GrdG
+  - UppFoy
+  - UppA
+  - UppB
+  - UppC
+  - UppD
+  - UppE
+  - UppF
+  - UppG
+  - UppH
+  - UppI
+  - UppJ
+  - UppK
+  - BseLnd
+  - BseA
+  - BseB
+  - BseC
+  - BseD
+  - BseE
+  - BseF
 --- !u!4 &977509758
 Transform:
   m_ObjectHideFlags: 0
@@ -40132,7 +40201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1077867215
 Transform:
   m_ObjectHideFlags: 0
@@ -44154,6 +44223,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floorx9 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 7486338232240096402, guid: 510388ca5dc0f0a4d850d83aa797511d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2698604824901172030, guid: 510388ca5dc0f0a4d850d83aa797511d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -47509,7 +47583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1332267151
 Transform:
   m_ObjectHideFlags: 0
@@ -51589,7 +51663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1440491105
 Transform:
   m_ObjectHideFlags: 0
@@ -60510,6 +60584,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Floorx9 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486338232240096402, guid: 510388ca5dc0f0a4d850d83aa797511d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2698604824901172030, guid: 510388ca5dc0f0a4d850d83aa797511d,
         type: 3}
@@ -74122,7 +74201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1961653463}
   m_Layer: 0
-  m_Name: '*RoomB-StatueRoom (1)'
+  m_Name: '*RoomB-StatueRoom'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77777,7 +77856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2042391993
 Transform:
   m_ObjectHideFlags: 0
@@ -77809,6 +77888,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Floorx9 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486338232240096402, guid: 510388ca5dc0f0a4d850d83aa797511d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2698604824901172030, guid: 510388ca5dc0f0a4d850d83aa797511d,
         type: 3}
@@ -84043,6 +84127,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floorx9 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 7486338232240096402, guid: 510388ca5dc0f0a4d850d83aa797511d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2698604824901172030, guid: 510388ca5dc0f0a4d850d83aa797511d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -84778,7 +84867,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2093626611}
   m_Layer: 0
-  m_Name: '*RoomC-LakeRoom (1)'
+  m_Name: '*RoomC-LakeRoom'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84798,7 +84887,6 @@ Transform:
   - {fileID: 1322290938}
   - {fileID: 455589629}
   - {fileID: 737016594}
-  - {fileID: 319968700}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

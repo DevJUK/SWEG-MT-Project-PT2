@@ -29,7 +29,7 @@ public class RoomAllocationEditor : Editor
 				}
 				else
 				{
-					EditorGUILayout.TextField(RAS.NPCS[i]);
+					EditorGUILayout.TextField(RAS.NPCS[i], GUILayout.MaxWidth(60f));
 				}
 			}
 		}
@@ -39,41 +39,23 @@ public class RoomAllocationEditor : Editor
 		{
 			for (int i = -1; i < 6; i++)
 			{
-				switch (i)
+				if (i == -1)
 				{
-					case -1:
-						EditorGUILayout.LabelField("Rooms: ", GUILayout.MaxWidth(60f));
-						break;
-					case 0:
-						EditorGUILayout.EnumPopup(RAS.CallyRoom);
-						break;
-					case 1:
-						EditorGUILayout.EnumPopup(RAS.MirandaRoom);
-						break;
-					case 2:
-						EditorGUILayout.EnumPopup(RAS.PoliceManRoom);
-						break;
-					case 3:
-						EditorGUILayout.EnumPopup(RAS.WitchRoom);
-						break;
-					case 4:
-						EditorGUILayout.EnumPopup(RAS.CatRoom);
-						break;
-					case 5:
-						EditorGUILayout.EnumPopup(RAS.KyleRoom);
-						break;
-					default:
-						break;
+					EditorGUILayout.LabelField("Rooms: ", GUILayout.MaxWidth(60f));
+				}
+				else
+				{
+					if (RAS.Locations[i, 1] != null)
+					{
+						EditorGUILayout.TextField(RAS.Locations[i, 1], GUILayout.MaxWidth(60f));
+					}
+					else
+					{
+						EditorGUILayout.TextField("Null", GUILayout.MaxWidth(60f));
+					}
 				}
 			}
 		}
 		EditorGUILayout.EndHorizontal();
-	}
-
-
-
-	internal void UpdateEnum(RoomAllocationScript.Room Enum)
-	{
-		
 	}
 }
