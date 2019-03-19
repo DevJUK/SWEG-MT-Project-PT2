@@ -32,7 +32,7 @@ public class RaycastItems : MonoBehaviour
 		if (Physics.Raycast(transform.position, transform.forward, out Hit, Range)) // Check to see if raycast hits anything
 		{
 
-            Debug.Log(Hit.transform.gameObject.name);
+            //Debug.Log(Hit.transform.gameObject.name);
 
             // Check to see if hit object is a npc or item
             if (Hit.transform.tag == "NPC") // if npc do this
