@@ -23,39 +23,39 @@ public class RoomTracker : MonoBehaviour
 		switch (collision.gameObject.transform.parent.transform.parent.name)
 		{
 			// Ground Floor Rooms
-			case string a when a.Contains("Entra"):
+			case string a when a.Contains("=Entra"):
 				RoomIn = "GrdEnt";
-				RAS.Locations[CharacterID, 1] = "GrdEnt";
+				RAS.Locations[CharacterID, 1] = "=GrdEnt";
 				break;
 			case string a when a.Contains("Grand"):
 				RoomIn = "GrdStr";
 				RAS.Locations[CharacterID, 1] = "GrdStr";
 				break;
-			case string a when a.Contains("RoomA"):
+			case string a when a.Contains("=RoomA"):
 				RoomIn = "GrdA";
 				RAS.Locations[CharacterID, 1] = "GrdA";
 				break;
-			case string a when a.Contains("RoomB"):
+			case string a when a.Contains("=RoomB"):
 				RoomIn = "GrdB";
 				RAS.Locations[CharacterID, 1] = "GrdB";
 				break;
-			case string a when a.Contains("RoomC"):
+			case string a when a.Contains("=RoomC"):
 				RoomIn = "GrdC";
 				RAS.Locations[CharacterID, 1] = "GrdC";
 				break;
-			case string a when a.Contains("RoomD"):
+			case string a when a.Contains("=RoomD"):
 				RoomIn = "GrdD";
 				RAS.Locations[CharacterID, 1] = "GrdD";
 				break;
-			case string a when a.Contains("RoomE"):
+			case string a when a.Contains("=RoomE"):
 				RoomIn = "GrdE";
 				RAS.Locations[CharacterID, 1] = "GrdE";
 				break;
-			case string a when a.Contains("RoomF"):
+			case string a when a.Contains("=RoomF"):
 				RoomIn = "GrdF";
 				RAS.Locations[CharacterID, 1] = "GrdF";
 				break;
-			case string a when a.Contains("RoomG"):
+			case string a when a.Contains("=RoomG"):
 				RoomIn = "GrdG";
 				RAS.Locations[CharacterID, 1] = "GrdG";
 				break;
