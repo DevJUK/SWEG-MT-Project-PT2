@@ -26,19 +26,10 @@ public class Item : MonoBehaviour
 	{
 		ItemObject = gameObject;
 
-		if (ItemName == null)
+		if (ItemName == "")
 		{
 			ItemName = gameObject.name;
 		}
-
-		//if (gameObject.GetComponent<Image>() == null)
-		//{
-		//	ItemSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
-		//}
-		//else
-		//{
-		//	ItemSprite = gameObject.GetComponent<Image>().sprite;
-		//}
 	}
 
 

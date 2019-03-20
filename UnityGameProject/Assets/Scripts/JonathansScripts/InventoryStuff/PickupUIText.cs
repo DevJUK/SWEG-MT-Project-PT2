@@ -12,9 +12,9 @@ public class PickupUIText : MonoBehaviour
 		text = GetComponent<Text>();
 	}
 
-	public void SetText(string itemname)
+	public void SetText(string input)
 	{
-		text.text = "(" + itemname + ")" + " | Pickup Item (e)";
+		text.text = input;
 	}
 
 	public void BlankText()

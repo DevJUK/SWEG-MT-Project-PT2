@@ -9,7 +9,7 @@ public class RaycastItems : MonoBehaviour
 	private bool UIOpen;
 
 	public PickupUIText PickupScript;
-	private ThrowableItemScript ThrowScript;
+	public ThrowableItemScript ThrowScript;
 
     // Anything to do with NPC's in this script was done by Ed so talk to him
 
@@ -52,9 +52,9 @@ public class RaycastItems : MonoBehaviour
                 {
 
 					NPCInteractionScrpt.StartInteraction(Hit.transform.gameObject);
-                    PickupScript.BlankText();
+					PickupScript.BlankText();
 
-                    if (Hit.transform.gameObject.GetComponent<ClassroomCutsceneController>())
+					if (Hit.transform.gameObject.GetComponent<ClassroomCutsceneController>())
                     {
                         Hit.transform.gameObject.GetComponent<ClassroomCutsceneController>().PlayCutscene();
                     }
@@ -72,40 +72,16 @@ public class RaycastItems : MonoBehaviour
                 }
             }
 
-
+			// Item Raycasting
             else
             {
-				if (Input.GetButtonDown("Pickup")) // E Key
-                {
-					if (ThrowScript.ItemHeld != null)
-					{
-						AddHitToInv(Hit);
-						ThrowScript.ItemHeld = null;
-					}
-					else
-					{
-						if (!Hit.transform.gameObject.GetComponent<Item>().IsNotCollectable)
-						{
-							ThrowScript.ItemHeld = Hit.transform.gameObject;
-						}
-					}
-				}
-
-				if (ThrowScript.ItemHeld == null)
-				{
-					if (Hit.transform.gameObject.GetComponent<Item>())
-					{
-						PickupScript.SetText(Hit.transform.gameObject.GetComponent<Item>().ItemName.ToString());
-					}
-					else
-					{
-						if (UI.activeInHierarchy)
-						{
-							PickupScript.BlankText();
-						}
-					}
-				}
-            }
+				ItemRaycasts(Hit);
+				BluePotionRaycast(Hit);
+			}
+		}
+		else
+		{
+			PickupScript.BlankText();
 		}
 	}
 
@@ -134,6 +110,60 @@ public class RaycastItems : MonoBehaviour
 		if (!UIOpen)
 		{
 			UI.SetActive(false);
+		}
+	}
+
+
+	private void ItemRaycasts(RaycastHit Hit)
+	{
+		// if there is an item been held by the player - then add it to the inventory when pcikup key is pressed again
+		if ((ThrowScript.ItemHeld != null) && (Hit.transform.gameObject.GetComponent<Item>()))
+		{
+			PickupScript.SetText(Hit.collider.gameObject.GetComponent<Item>().ItemName + " | Throw (t) | Add to Inv (e)");
+
+			if (Input.GetButtonDown("Pickup"))
+			{
+				AddHitToInv(Hit);
+				ThrowScript.ItemHeld = null;
+				PickupScript.BlankText();
+			}
+		}
+		// if there isn't an item been held by the player but it has hit an item
+		else if ((ThrowScript.ItemHeld == null) && (Hit.transform.gameObject.GetComponent<Item>()))
+		{
+			PickupScript.SetText(Hit.collider.gameObject.GetComponent<Item>().ItemName + " | Pickup (e)");
+
+			if (Input.GetButtonDown("Pickup"))
+			{
+				ThrowScript.ItemHeld = Hit.transform.gameObject;
+			}
+		}
+		else
+		{
+			PickupScript.BlankText();
+		}
+	}
+
+
+	private void BluePotionRaycast(RaycastHit Hit)
+	{
+		if (Hit.collider.name.Contains("Blue"))
+		{
+			if ((ThrowScript.ItemHeld != null) && (ThrowScript.ItemHeld.name.Contains("Blue")))
+			{
+				PickupScript.SetText("Blue Potion | Drink (q) | Throw (t) | Add To Inv (e)");
+			}
+			else
+			{
+				//TitleText.transform.parent.GetComponentInChildren<Animator>().SetTrigger("Hit");
+				PickupScript.SetText("Blue Potion | Drink (q) | Pickup (e)");
+			}
+
+			if (Input.GetButtonDown("Drink"))
+			{
+			 	GetComponent<PotionChoiceScript>().TurnSmall = true;
+				Hit.collider.gameObject.SetActive(false);
+			}
 		}
 	}
 }

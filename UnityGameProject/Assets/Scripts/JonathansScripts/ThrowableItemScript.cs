@@ -12,7 +12,7 @@ public class ThrowableItemScript : MonoBehaviour
 		ThrowSpeed = 500f;	
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
 		if (ItemHeld != null)
 		{

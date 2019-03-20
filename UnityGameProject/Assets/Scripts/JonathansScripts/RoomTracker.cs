@@ -12,8 +12,15 @@ public class RoomTracker : MonoBehaviour
 
 	private void Start()
 	{
-		// Sets the character ID up to the array position
-		SetCharacterID(RAS, Character);
+		if (!FindObjectOfType<RoomAllocationScript>())
+		{
+			enabled = false;
+		}
+		else
+		{
+			// Sets the character ID up to the array position
+			SetCharacterID(RAS, Character);
+		}
 	}
 
 	// Checks which empty object holds the floor the tracked object is on
