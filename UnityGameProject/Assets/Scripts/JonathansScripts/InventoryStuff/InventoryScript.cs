@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 public class InventoryScript : MonoBehaviour
 {
@@ -12,6 +11,8 @@ public class InventoryScript : MonoBehaviour
 
 	public Image[] ItemImages = new Image[NumberItemSlots];     // Creates an array of images that is the size of the number of slots in the inventory (this is used to hold the images in the inventory)
 	public Item[] items = new Item[NumberItemSlots];            // Creates an array of items that is the size of the number of slots in the inventory (this is used to hold the actual item)
+
+	public Text SelectedText;
 
 	[Header("Player GameObject")]
 	public GameObject Player;
@@ -86,6 +87,7 @@ public class InventoryScript : MonoBehaviour
 					if ((SelectedItem != null) && (ItemImages[i].sprite == SelectedItem.ItemInvImage))
 					{
 						ItemImages[i].gameObject.transform.parent.GetComponentInChildren<Image>().color = Color.yellow;
+						SelectedText.text = SelectedItem.ItemName;
 					}
 					else
 					{
