@@ -16,7 +16,7 @@ public class UIBGScript : MonoBehaviour
 
 	public void ClosePanel()
 	{
-		InvScript.PanelOpen = false;
+		//InvScript.PanelOpen = false;
 	}
 
 	public void EquipItem()
@@ -36,8 +36,6 @@ public class UIBGScript : MonoBehaviour
 	public void CloseUI()
 	{
 		InvScript.gameObject.GetComponentInParent<InvButtonScript>().OpenInv();
-		InvScript.PrefabMade = false;
-		Destroy(this.gameObject);
 	}
 
 }

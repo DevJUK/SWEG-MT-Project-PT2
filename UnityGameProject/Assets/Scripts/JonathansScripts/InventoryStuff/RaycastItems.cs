@@ -6,7 +6,6 @@ public class RaycastItems : MonoBehaviour
 {
 	public float Range;
 	public GameObject UI;
-	private bool UIOpen;
 
 	public PickupUIText PickupScript;
 	public ThrowableItemScript ThrowScript;
@@ -24,7 +23,7 @@ public class RaycastItems : MonoBehaviour
 	}
 
 
-	private void FixedUpdate()
+	private void Update()
 	{
 		RaycastHit Hit;
         
@@ -99,21 +98,6 @@ public class RaycastItems : MonoBehaviour
 	}
 
 
-
-	private void ToggleUI()
-	{
-		if (UIOpen)
-		{
-			UI.SetActive(true);
-		}
-
-		if (!UIOpen)
-		{
-			UI.SetActive(false);
-		}
-	}
-
-
 	private void ItemRaycasts(RaycastHit Hit)
 	{
 		// if there is an item been held by the player - then add it to the inventory when pcikup key is pressed again
@@ -142,6 +126,7 @@ public class RaycastItems : MonoBehaviour
 		{
 			PickupScript.BlankText();
 		}
+		
 	}
 
 

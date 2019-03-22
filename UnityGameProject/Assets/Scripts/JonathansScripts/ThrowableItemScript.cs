@@ -20,7 +20,7 @@ public class ThrowableItemScript : MonoBehaviour
 
 			ItemHeld.gameObject.transform.position = transform.position;
 
-			if (Input.GetKeyDown(KeyCode.T))
+			if (Input.GetButton("Throw"))
 			{
 				ThrowItem(ItemHeld.GetComponent<Item>());
 			}

@@ -14,9 +14,6 @@ public class InventoryScript : MonoBehaviour
 
 	public Text SelectedText;
 
-	[Header("Player GameObject")]
-	public GameObject Player;
-
 	[Header("Are there any items in the inventory")]
 	public bool ItemsInInv;
 
@@ -28,31 +25,24 @@ public class InventoryScript : MonoBehaviour
 	public PointerEventData PointerEvent;
 	public EventSystem Events;
 
-	public int NumberOfPresses;
-	public GameObject ItemDetailPrefab;
-	internal bool PanelOpen;
-	internal bool PrefabMade;
-
 	private ThrowableItemScript ThrowScript;
 	private InvButtonScript InvButton;
 
 	private void Start()
 	{
-		Player = GameObject.FindGameObjectWithTag("Player");
 		Events = FindObjectOfType<EventSystem>().GetComponent<EventSystem>();
 		ThrowScript = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<ThrowableItemScript>();
 		InvButton = GameObject.Find("InventoryUIElements").GetComponent<InvButtonScript>();
 	}
 
-
-	void Update()
+	private void Update()
 	{
 		PointerEvent = new PointerEventData(Events);                        // Set up a new PointerEvent
 		PointerEvent.position = Input.mousePosition;                        // Set up the PointerEvent to be where the mouse is
 		List<RaycastResult> Results = new List<RaycastResult>();            // Creating a list to store the raycase information
 		Ray.Raycast(PointerEvent, Results);
 
-		if (Input.GetMouseButtonDown(0))                                    // If right click is pressed
+		if (Input.GetMouseButtonDown(0))                                    // If left click pressed
 		{
 			foreach (RaycastResult item in Results)                         // search through the results
 			{
@@ -60,9 +50,6 @@ public class InventoryScript : MonoBehaviour
 				{
 					if (item.gameObject == I.gameObject)
 					{
-						Debug.Log(I.gameObject.GetComponent<Image>().sprite);
-
-
 						if (I.gameObject.GetComponent<Image>().sprite != null)
 						{
 							foreach (Item Thing in items)
@@ -76,14 +63,14 @@ public class InventoryScript : MonoBehaviour
 						else
 						{
 							SelectedItem = null;
+							SelectedText.text = "";
 						}
 					}
 				}
 
-
-
 				for (int i = 0; i < NumberItemSlots; i++)
 				{
+
 					if ((SelectedItem != null) && (ItemImages[i].sprite == SelectedItem.ItemInvImage))
 					{
 						ItemImages[i].gameObject.transform.parent.GetComponentInChildren<Image>().color = Color.yellow;
@@ -97,8 +84,6 @@ public class InventoryScript : MonoBehaviour
 			}
 		}
 	}
-
-
 
 	public void AddItem(Item Input)
     {
@@ -121,34 +106,24 @@ public class InventoryScript : MonoBehaviour
 
 			if (ItemsInInv)
 			{
-				//ItemImages[i].GetComponent<Stack>().AddToStackValue();
 				break;
 			}
-			else
+			else if (items[i] == null)                               // Check to see if there is a free slot in the inventory, null being a free slot
 			{
-				if (items[i] == null)                               // Check to see if there is a free slot in the inventory, null being a free slot
+				items[i] = Input;                               // adds the item to the free slot
+
+				if (!Input.IsSpriteNull(Input.ItemInvImage))
 				{
-					items[i] = Input;                               // adds the item to the free slot
-
-					if (!Input.IsSpriteNull(Input.ItemInvImage))
-					{
-						ItemImages[i].sprite = Input.ItemInvImage;
-					}
-					else
-					{
-						ItemImages[i].sprite = Input.ItemSprite;
-					}
-
-					ItemImages[i].enabled = true;
-					//ItemImages[i].GetComponent<Stack>().AddToStackValue();
-					//ItemImages[i].GetComponent<Stack>().SetItemText(items[i]);				// would show the name of the item - removed as the selected part isn't made
-					ItemsInInv = true;
-					break;
+					ItemImages[i].sprite = Input.ItemInvImage;
 				}
 				else
 				{
-					// if the inventory is full enable the object in the scene
+					ItemImages[i].sprite = Input.ItemSprite;
 				}
+
+				ItemImages[i].enabled = true;
+				ItemsInInv = true;
+				break;
 			}
 
 			Input.gameObject.SetActive(true);
@@ -172,7 +147,7 @@ public class InventoryScript : MonoBehaviour
 		{
 			if (items[i] == SelectedItem)                              // Check to see if the item inputted is in the inventory
 			{
-				items[i].gameObject.transform.position = Player.GetComponentInChildren<ThrowableItemScript>().gameObject.transform.position;
+				items[i].gameObject.transform.position = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<ThrowableItemScript>().gameObject.transform.position;
 				items[i].transform.SetParent(null);
 				items[i].gameObject.SetActive(true);
 				
@@ -182,77 +157,18 @@ public class InventoryScript : MonoBehaviour
 				}
 
 				items[i].gameObject.GetComponent<Item>().enabled = true;
-
 				items[i] = null;                                // removes the item from the inventory returning it to null
 				ItemImages[i].sprite = null;                           // removes the image for the inventory slot, reutrning it to null
 				ItemImages[i].enabled = false;
+
+				SelectedItem = null;
+				SelectedText.text = "";
+				ItemImages[i].gameObject.transform.parent.GetComponentInChildren<Image>().color = Color.white;
+
 				break;
 			}
 		}
 	}
-
-
-
-
-	public void OpenItem()
-	{
-		if (!PanelOpen)
-		{
-			PanelOpen = true;
-
-
-			if (!PrefabMade)
-			{
-				PrefabMade = true;
-
-				GameObject ItemDetail = Instantiate(ItemDetailPrefab);
-				ItemDetail.gameObject.name = "UIBG";
-				ItemDetail.transform.SetParent(GameObject.Find("InvCanvas").transform, false);
-				ItemDetail.GetComponent<Animator>().SetTrigger("FadeIn");
-
-				foreach (Text t in ItemDetail.GetComponentsInChildren<Text>())
-				{
-					if (t.gameObject.name == "ItemName")
-					{
-						t.text = SelectedItem.ItemName;
-					}
-
-					if (t.gameObject.name == "ItemDesc")
-					{
-						t.text = SelectedItem.ItemDesc;
-					}
-				}
-
-				ItemDetail.GetComponent<UIBGScript>().ThisItem = SelectedItem;
-				SelectedItem = null;
-				NumberOfPresses = 0;
-			}
-			else
-			{
-				GameObject Panel = GameObject.Find("UIBG");
-
-				Panel.GetComponent<Animator>().SetTrigger("FadeIn");
-
-				foreach (Text t in Panel.GetComponentsInChildren<Text>())
-				{
-					if (t.gameObject.name == "ItemName")
-					{
-						t.text = SelectedItem.ItemName;
-					}
-
-					if (t.gameObject.name == "ItemDesc")
-					{
-						t.text = SelectedItem.ItemDesc;
-					}
-				}
-
-				Panel.GetComponent<UIBGScript>().ThisItem = SelectedItem;
-				SelectedItem = null;
-				NumberOfPresses = 0;
-			}
-		}
-	}
-
 
 
 	public void ClearInv()
