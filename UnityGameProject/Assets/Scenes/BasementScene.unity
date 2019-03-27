@@ -27001,6 +27001,16 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 540847310899350475, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 540847310899350475, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 50.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5857350158885154158, guid: 956539c4ebe48d740a3e2923f2fdef4c,
         type: 3}
       propertyPath: Character
@@ -27035,16 +27045,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 540847310899350475, guid: 956539c4ebe48d740a3e2923f2fdef4c,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -7.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 540847310899350475, guid: 956539c4ebe48d740a3e2923f2fdef4c,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 50.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 956539c4ebe48d740a3e2923f2fdef4c, type: 3}

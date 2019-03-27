@@ -57,5 +57,7 @@ public class RoomAllocationEditor : Editor
 			}
 		}
 		EditorGUILayout.EndHorizontal();
+
+		Repaint();
 	}
 }
