@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    
 
     Entity This;
 
@@ -37,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
         This.Move(MoveDir);
         //This.CallyMove(MoveDir);
-        //This.StaticCrouch(MoveDir);
-	}
+        //This.StaticCrouch(MoveDir);       
+    }
+
+    
 }

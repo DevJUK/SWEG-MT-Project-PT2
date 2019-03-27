@@ -26,6 +26,10 @@ public class Entity : MonoBehaviour
     private bool Moving;
     private bool isCrouching;
 
+    public float Joystickdeadzone = 0.1f;
+    public float Joysticksensativity = 2f;
+    public float Mousesensatiity = 2f;
+
     //set to one for no effect and only changed in traps;
     public float SpeedModifier = 1;       
     
@@ -37,10 +41,10 @@ public class Entity : MonoBehaviour
         col = GetComponent<CapsuleCollider>();
         startColliderHeight = col.height;
 	}
+   
 
     public void Move(Vector3 MoveDir)
     {
-        
         if (Input.GetKey(KeyCode.LeftControl))
         {
             anim.SetBool("IsCrouching", true);
