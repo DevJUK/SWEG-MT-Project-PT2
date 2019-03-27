@@ -10,11 +10,11 @@ public class RaycastItems : MonoBehaviour
 	public PickupUIText PickupScript;
 	public ThrowableItemScript ThrowScript;
 
-    // Anything to do with NPC's in this script was done by Ed so talk to him
+	// Anything to do with NPC's in this script was done by Ed so talk to him
 
-    public NPCInteractionScrpt NPCInteractionScrpt; // the main controll script for npc dialogue interactions
-    public MirrorTipScript MirrorTipScript; // Script used to tip the mirror (who'd of guessed it)
-    public string NameofNPCHit; // Used to send the name of the NPC to the NPC interaction script
+	public NPCInteractionScrpt NPCInteractionScrpt; // the main controll script for npc dialogue interactions
+	public MirrorTipScript MirrorTipScript; // Script used to tip the mirror (who'd of guessed it)
+	public string NameofNPCHit; // Used to send the name of the NPC to the NPC interaction script
 
 	private void Start()
 	{
@@ -26,61 +26,61 @@ public class RaycastItems : MonoBehaviour
 	private void Update()
 	{
 		RaycastHit Hit;
-        
+
 
 		if (Physics.Raycast(transform.position, transform.forward, out Hit, Range)) // Check to see if raycast hits anything
 		{
 
-            //Debug.Log(Hit.transform.gameObject.name);
+			//Debug.Log(Hit.transform.gameObject.name);
 
-            // Check to see if hit object is a npc or item
-            if (Hit.transform.tag == "NPC") // if npc do this
-            {
-                // May need to change Name of model when using in actual game
-                NPCInteractionScrpt = GameObject.Find("Cally V1 Model@Idle").GetComponent<NPCInteractionScrpt>();
+			// Check to see if hit object is a npc or item
+			if (Hit.transform.tag == "NPC") // if npc do this
+			{
+				// May need to change Name of model when using in actual game
+				NPCInteractionScrpt = GameObject.Find("Cally V1 Model@Idle").GetComponent<NPCInteractionScrpt>();
 
-                NameofNPCHit = Hit.transform.name; // getting the name of the NPC hit 
-                Debug.Log("Raycast Hitting NPC");
+				NameofNPCHit = Hit.transform.name; // getting the name of the NPC hit 
+				Debug.Log("Raycast Hitting NPC");
 
-                if (UI.activeInHierarchy) // might need work +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                {
-                    PickupScript.SetText(Hit.transform.gameObject.GetComponent<NPCDialogueScrpt>().NPCName);
-                }
+				if (UI.activeInHierarchy) // might need work +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+				{
+					PickupScript.SetText(Hit.transform.gameObject.GetComponent<NPCDialogueScrpt>().NPCName);
+				}
 
-                if (Input.GetButtonDown("Pickup")) // E Key
-                {
+				if (Input.GetButtonDown("Pickup")) // E Key
+				{
 
 					NPCInteractionScrpt.StartInteraction(Hit.transform.gameObject);
 					PickupScript.BlankText();
 
 					if (Hit.transform.gameObject.GetComponent<ClassroomCutsceneController>())
-                    {
-                        Hit.transform.gameObject.GetComponent<ClassroomCutsceneController>().PlayCutscene();
-                    }
-                }
-            }
+					{
+						Hit.transform.gameObject.GetComponent<ClassroomCutsceneController>().PlayCutscene();
+					}
+				}
+			}
 
-            if (Hit.transform.tag == "Mirror")
-            {
-                Debug.Log("Raycast hitting mirror");
+			if (Hit.transform.tag == "Mirror")
+			{
+				Debug.Log("Raycast hitting mirror");
 
-                if (Input.GetButtonDown("Pickup")) // E Key
-                {
+				if (Input.GetButtonDown("Pickup")) // E Key
+				{
 					PickupScript.BlankText();
 					MirrorTipScript.TipMirror();
-                }
-            }
+				}
+			}
 
 			// Item Raycasting
-            else
-            {
+			else
+			{
 				ItemRaycasts(Hit);
 				BluePotionRaycast(Hit);
 			}
 		}
 		else
 		{
-			PickupScript.BlankText();
+			//PickupScript.BlankText();
 		}
 	}
 
@@ -124,9 +124,9 @@ public class RaycastItems : MonoBehaviour
 		}
 		else
 		{
-			PickupScript.BlankText();
+			//PickupScript.BlankText();
 		}
-		
+
 	}
 
 
@@ -146,7 +146,7 @@ public class RaycastItems : MonoBehaviour
 
 			if (Input.GetButtonDown("Drink"))
 			{
-			 	GetComponent<PotionChoiceScript>().TurnSmall = true;
+				GetComponent<PotionChoiceScript>().TurnSmall = true;
 				Hit.collider.gameObject.SetActive(false);
 			}
 		}
