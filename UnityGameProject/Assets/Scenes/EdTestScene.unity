@@ -3187,7 +3187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &291148508
 Transform:
   m_ObjectHideFlags: 0
@@ -8825,7 +8825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &984911908
 Transform:
   m_ObjectHideFlags: 0
@@ -9023,7 +9023,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &993369630
 Transform:
   m_ObjectHideFlags: 0
@@ -12034,7 +12034,7 @@ MonoBehaviour:
   BlackCanvas: {fileID: 237556952}
   Delay: 1
   AmountOfBlinks: 3
-  CurrentBlinkNo: 0
+  CurrentBlinkNo: 1
 --- !u!65 &1167045860
 BoxCollider:
   m_ObjectHideFlags: 0

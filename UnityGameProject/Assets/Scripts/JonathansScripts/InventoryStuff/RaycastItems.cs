@@ -80,7 +80,7 @@ public class RaycastItems : MonoBehaviour
             if (Hit.transform.tag == "CharredMirror")
             {
                 Debug.Log("Raycast hitting charred mirror");
-                PickupScript.SetText(Interact);
+                //PickupScript.SetText(Interact);
 
                 if (Input.GetButtonDown("Pickup")) // E Key
                 {
