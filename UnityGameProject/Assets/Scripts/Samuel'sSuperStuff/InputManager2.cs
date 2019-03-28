@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class InputManager2 : MonoBehaviour
 {
     public float Joystickdeadzone = 0.1f;
     public float Joysticksensativity = 2f;
@@ -21,23 +21,30 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float forward = Input.GetAxis("Vertical");
-        float sideways = Input.GetAxis("Horizontal");
-        Debug.Log("up/down");
+        float forward = Input.GetAxis("VerticalJ");
+        float sideways = Input.GetAxis("HorizontalJ");
+        //Debug.Log("up/down");
 
 
         if (forward < Joystickdeadzone && forward > -Joystickdeadzone)
         {
-            Debug.Log("up/down");
-            forward = 0;
+			Debug.Log("up/down");
+			forward = 1;
         }
         if (sideways < Joystickdeadzone && forward > -Joystickdeadzone)
         {
-            sideways = 0;
+			sideways = 1;
         }
+
 
         Vector3 MoveDir = new Vector3(sideways, 0.0f, forward);
         player.Move(MoveDir);
+
+		// Jonathan's Stuff
+		if ((Input.GetAxis("Axis4") > 0) | (Input.GetAxis("Axis4") < 0))
+		{
+			player.transform.Rotate(new Vector3(0, Input.GetAxis("Axis4"), 0));
+		}
     }
 
    // private void Movement()
