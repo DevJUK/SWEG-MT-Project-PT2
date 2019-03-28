@@ -16,6 +16,11 @@ public class RaycastItems : MonoBehaviour
 	public MirrorTipScript MirrorTipScript; // Script used to tip the mirror (who'd of guessed it)
 	public string NameofNPCHit; // Used to send the name of the NPC to the NPC interaction script
 
+    // Added during agile by Ed --------------------------------------------
+    public CharredRoomEventScrpt CharredRoomEventScrpt;
+    public string Interact = "E - Interact";
+    // ---------------------------------------------------------------------
+
 	private void Start()
 	{
 		ThrowScript = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<ThrowableItemScript>();
@@ -70,6 +75,20 @@ public class RaycastItems : MonoBehaviour
 					MirrorTipScript.TipMirror();
 				}
 			}
+
+            // Added in agile by ed -----------------------------------------
+            if (Hit.transform.tag == "CharredMirror")
+            {
+                Debug.Log("Raycast hitting charred mirror");
+                PickupScript.SetText(Interact);
+
+                if (Input.GetButtonDown("Pickup")) // E Key
+                {
+                    PickupScript.BlankText();
+                    CharredRoomEventScrpt.RunEvent();
+                }
+            }
+            // -------------------------------------------------------------
 
 			// Item Raycasting
 			else
