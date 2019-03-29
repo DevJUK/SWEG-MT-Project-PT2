@@ -84,8 +84,9 @@ public class RaycastItems : MonoBehaviour
 
                 if (Input.GetButtonDown("Pickup")) // E Key
                 {
-                    PickupScript.BlankText();
+                    Debug.LogWarning("is this working");
                     CharredRoomEventScrpt.RunEvent();
+                    PickupScript.BlankText();
                 }
             }
             // -------------------------------------------------------------

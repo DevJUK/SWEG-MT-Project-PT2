@@ -24,45 +24,57 @@ public class CharredRoomEventScrpt : MonoBehaviour
     [Tooltip("The number of times that the coroutine has looped")]
     public int CurrentBlinkNo;
 
+    public Stats stats;
+
     public void RunEvent()
     {
-        if (CurrentBlinkNo <= AmountOfBlinks)
-        {
+        //if (CurrentBlinkNo <= AmountOfBlinks)
+        //{
             StartCoroutine(Blink());
             Debug.Log("Start Coroutine");
-        }
+        //}
     }
 
     IEnumerator Blink()
     {
         Debug.Log("Running Event");
-        while (CurrentBlinkNo <= AmountOfBlinks)
-        {
-            BlackCanvas.SetActive(true);
-            if (CurrentBlinkNo == 1)
-            {
-                ManequinsPos1.SetActive(true);
-                ManequinsPos2.SetActive(false);
-                ManequinsPos3.SetActive(false);
-            }
+        
+        // First blink
+        BlackCanvas.SetActive(true);
 
-            if (CurrentBlinkNo == 2)
-            {
-                ManequinsPos1.SetActive(false);
-                ManequinsPos2.SetActive(true);
-                ManequinsPos3.SetActive(false);
-            }
+        ManequinsPos1.SetActive(true);
+        ManequinsPos2.SetActive(false);
+        ManequinsPos3.SetActive(false);
 
-            if (CurrentBlinkNo == 3)
-            {
-                ManequinsPos1.SetActive(false);
-                ManequinsPos2.SetActive(false);
-                ManequinsPos3.SetActive(true);
-            }
+        yield return new WaitForSeconds(Delay);
 
-            CurrentBlinkNo++;
-            yield return new WaitForSeconds(Delay);
-            BlackCanvas.SetActive(false);
-        }
+        BlackCanvas.SetActive(false);
+
+        yield return new WaitForSeconds(Delay);
+
+        // Second blink
+        BlackCanvas.SetActive(true);
+
+        ManequinsPos1.SetActive(false);
+        ManequinsPos2.SetActive(true);
+
+        yield return new WaitForSeconds(Delay);
+
+        BlackCanvas.SetActive(false);
+
+        yield return new WaitForSeconds(Delay);
+
+        // Third blink
+        BlackCanvas.SetActive(true);
+
+        ManequinsPos2.SetActive(false);
+        ManequinsPos3.SetActive(true);
+
+        yield return new WaitForSeconds(Delay);
+
+        stats.Health -= 2;
+        stats.Sanity -= 2;
+        BlackCanvas.SetActive(false);
+
     }
 }
