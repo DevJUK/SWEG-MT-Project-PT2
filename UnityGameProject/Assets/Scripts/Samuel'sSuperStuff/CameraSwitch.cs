@@ -12,8 +12,7 @@ public class CameraSwitch : MonoBehaviour
         if (Boolon.Event == true)
         {
             Camera1.SetActive(false);
-            Camera2.SetActive(true);
-            
+            Camera2.SetActive(true);            
         }
     }
 }
