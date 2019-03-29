@@ -31,10 +31,10 @@ public class PlayerController : MonoBehaviour
 
        
 
-         if (Input.GetButton("Jump"))
-         {
-             This.Jump();
-         }     
+         //if (Input.GetButton("Jump"))
+         //{
+         //    This.Jump();
+         //}     
 
         This.Move(MoveDir);
         //This.CallyMove(MoveDir);

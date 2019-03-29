@@ -52,10 +52,10 @@ public class Mouse_Move : MonoBehaviour
 			
 			else
 			{
-				rotationY -= Input.GetAxis("Mouse Y") * sensitivityVer;
+				rotationY -= Input.GetAxis("MouseY") * sensitivityVer;
 				rotationY = Mathf.Clamp(rotationY, minVert, maxVert);
 
-				float delta = Input.GetAxis("Mouse X") * sensitivityHor;
+				float delta = Input.GetAxis("MouseX") * sensitivityHor;
 				float rotationX = transform.localEulerAngles.y + delta;
 
 				Cam.localEulerAngles = new Vector3(rotationY, Cam.rotation.y, 0);
