@@ -24,7 +24,15 @@ public class CharredRoomEventScrpt : MonoBehaviour
     [Tooltip("The number of times that the coroutine has looped")]
     public int CurrentBlinkNo;
 
+    [Header("Stats Script")]
+    [Tooltip("The script that controls all the players stats")]
     public Stats stats;
+
+    [Header("Camera Movement Script")]
+    [Tooltip("The script that moves the camera with the mouse")]
+    public Mouse_Move Mouse_Move;
+
+    public PlayerController PlayerController;
 
     public void RunEvent()
     {
@@ -38,7 +46,10 @@ public class CharredRoomEventScrpt : MonoBehaviour
     IEnumerator Blink()
     {
         Debug.Log("Running Event");
-        
+
+        Mouse_Move.enabled = false; // Stop the player from being able to look around
+        PlayerController.enabled = false; // Stop the player from being able to walk around
+
         // First blink
         BlackCanvas.SetActive(true);
 
@@ -75,6 +86,9 @@ public class CharredRoomEventScrpt : MonoBehaviour
         stats.Health -= 2;
         stats.Sanity -= 2;
         BlackCanvas.SetActive(false);
+
+        Mouse_Move.enabled = true; // Allow the player to be able to look around again
+        PlayerController.enabled = true; // Allow the player to be able to walk around again
 
     }
 }
