@@ -12,23 +12,19 @@ public class Larder_Event_Start : MonoBehaviour
     //public Entity AnimStop;
     //public Event_Start Boolon;
     Animator anim; //Assigns the animator
-    
 
+   // private void Start()
+   // {
+   //     anim = GetComponent<Animator>();
+   // }
 
-
-    void Update()
-    {
-        if (Event == true)
-        {
-            AIMovment.enabled = true;
-        }
-    }
 
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("running");
+            //anim.SetBool("IsWalking", false);
             MovementScript.enabled = false;
             stopMouse.enabled = false;            
             Event = true;
