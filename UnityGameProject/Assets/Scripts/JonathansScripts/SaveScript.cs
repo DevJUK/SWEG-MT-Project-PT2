@@ -11,11 +11,12 @@ public class SaveScript : MonoBehaviour
 {
 
 	public GameObject Player;
-
+	public RoomAllocationScript RAS;
 
 	private void Start()
 	{
-		Player = GameObject.FindGameObjectWithTag("Player");
+		if (GameObject.FindGameObjectWithTag("Player")) { Player = GameObject.FindGameObjectWithTag("Player"); }
+		if (FindObjectOfType<RoomAllocationScript>()) { RAS = FindObjectOfType<RoomAllocationScript>(); }
 	}
 
 
@@ -44,6 +45,14 @@ public class SaveScript : MonoBehaviour
 		Data.Willpower = Player.GetComponentInChildren<Stats>().Willpower;
 		Data.Perception = Player.GetComponentInChildren<Stats>().Perception;
 		Data.Charisma = Player.GetComponentInChildren<Stats>().Charisma;
+
+		// Room Data
+		Data.PlayerRoom = RAS.Locations[0, 1];
+		Data.MirandaRoom = RAS.Locations[1, 1];
+		Data.PolicemanRoom = RAS.Locations[2, 1];
+		Data.WitchRoom = RAS.Locations[3, 1];
+		Data.CatRoom = RAS.Locations[4, 1];
+		Data.KyleRoom = RAS.Locations[5, 1];
 
 
 		// Converts to binrary, using the data from the data thingy in a data file
@@ -88,6 +97,13 @@ public class SaveScript : MonoBehaviour
 
 			//ControllerScript.ReactorTotalPoints = Data.Score;
 
+			// Room Data
+			RAS.Locations[0, 1] = Data.PlayerRoom;
+			RAS.Locations[1, 1] = Data.MirandaRoom;
+			RAS.Locations[2, 1] = Data.PolicemanRoom;
+			RAS.Locations[3, 1] = Data.WitchRoom;
+			RAS.Locations[4, 1] = Data.CatRoom;
+			RAS.Locations[5, 1] = Data.KyleRoom;
 
 		}
 
@@ -115,4 +131,11 @@ class GameData
 	public int Perception;
 	public int Charisma;
 
+	// Rooms in
+	public string PlayerRoom;
+	public string MirandaRoom;
+	public string PolicemanRoom;
+	public string KyleRoom;
+	public string WitchRoom;
+	public string CatRoom;
 }

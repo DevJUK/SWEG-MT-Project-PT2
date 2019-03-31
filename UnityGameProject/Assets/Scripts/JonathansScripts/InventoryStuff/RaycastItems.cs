@@ -33,7 +33,7 @@ public class RaycastItems : MonoBehaviour
 		RaycastHit Hit;
 
 
-		if (Physics.Raycast(transform.position, transform.forward, out Hit, Range)) // Check to see if raycast hits anything
+		if (Physics.Raycast(transform.position, transform.forward, out Hit, LayerMask.NameToLayer("Interact"))) // Check to see if raycast hits anything
 		{
 
 			//Debug.Log(Hit.transform.gameObject.name);
