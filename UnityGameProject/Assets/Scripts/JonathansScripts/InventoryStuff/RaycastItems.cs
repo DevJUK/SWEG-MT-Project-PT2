@@ -6,6 +6,7 @@ public class RaycastItems : MonoBehaviour
 {
 	public float Range;
 	public GameObject UI;
+	public InventoryScript Invent;
 
 	public PickupUIText PickupScript;
 	public ThrowableItemScript ThrowScript;
@@ -33,7 +34,7 @@ public class RaycastItems : MonoBehaviour
 		RaycastHit Hit;
 
 
-		if (Physics.Raycast(transform.position, transform.forward, out Hit, LayerMask.NameToLayer("Interact"))) // Check to see if raycast hits anything
+		if (Physics.Raycast(transform.position, transform.forward, out Hit, Range)) // Check to see if raycast hits anything
 		{
 
 			//Debug.Log(Hit.transform.gameObject.name);
@@ -100,7 +101,7 @@ public class RaycastItems : MonoBehaviour
 		}
 		else
 		{
-			//PickupScript.BlankText();
+			PickupScript.BlankText();
 		}
 	}
 
@@ -108,12 +109,16 @@ public class RaycastItems : MonoBehaviour
 
 	private void AddHitToInv(RaycastHit Hit)
 	{
-		if (Hit.transform.gameObject.GetComponent<Item>())
+		if ((Hit.transform.gameObject.GetComponent<Item>()) && (!Hit.transform.gameObject.GetComponent<Item>().IsNotCollectable) && (Invent.ItemsInInv < 10))
 		{
 			Hit.transform.gameObject.GetComponent<Item>().AddToInv(Hit.transform.gameObject.GetComponent<Item>());
 			Hit.transform.gameObject.transform.SetParent(GameObject.Find("InvItems").transform);
 			Hit.transform.gameObject.SetActive(false);
 			PickupScript.BlankText();
+		}
+		else
+		{
+			if (!Hit.transform.gameObject.GetComponent<Rigidbody>()) { Hit.transform.gameObject.AddComponent<Rigidbody>(); }
 		}
 	}
 

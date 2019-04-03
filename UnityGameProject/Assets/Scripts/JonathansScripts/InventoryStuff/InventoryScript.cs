@@ -14,9 +14,6 @@ public class InventoryScript : MonoBehaviour
 
 	public Text SelectedText;
 
-	[Header("Are there any items in the inventory")]
-	public bool ItemsInInv;
-
 	[Header("The Item Currently Selected")]
 	public Item SelectedItem;
 
@@ -27,6 +24,7 @@ public class InventoryScript : MonoBehaviour
 
 	private ThrowableItemScript ThrowScript;
 	private InvButtonScript InvButton;
+	internal int ItemsInInv;
 
 	private void Start()
 	{
@@ -37,6 +35,8 @@ public class InventoryScript : MonoBehaviour
 
 	private void Update()
 	{
+		Debug.Log(ItemsInInv);
+
 		PointerEvent = new PointerEventData(Events);                        // Set up a new PointerEvent
 		PointerEvent.position = Input.mousePosition;                        // Set up the PointerEvent to be where the mouse is
 		List<RaycastResult> Results = new List<RaycastResult>();            // Creating a list to store the raycase information
@@ -85,56 +85,42 @@ public class InventoryScript : MonoBehaviour
 		}
 	}
 
+
 	public void AddItem(Item Input)
     {
 		for (int i = 0; i < items.Length; i++)
 		{
+			if (ItemsInInv <= 10)
+			{
+				if (items[i] == null)                               // Check to see if there is a free slot in the inventory, null being a free slot
+				{
+					items[i] = Input;                               // adds the item to the free slot
 
-			if (items[i] == null)
-			{
-				ItemsInInv = false;
-			}
-			else if (Input.ItemName == items[i].ItemName)
-			{
-				ItemsInInv = true;
+					if (!Input.IsSpriteNull(Input.ItemInvImage))
+					{
+						ItemImages[i].sprite = Input.ItemInvImage;
+					}
+					else
+					{
+						ItemImages[i].sprite = Input.ItemSprite;
+					}
+
+					ItemImages[i].enabled = true;
+
+					ItemsInInv++;
+					break;
+				}
+
+				Input.gameObject.SetActive(true);
+
+				if (Input.gameObject.GetComponent<SpriteRenderer>())
+				{
+					Input.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+				}
 			}
 			else
 			{
-				ItemsInInv = false;
-			}
-
-
-			if (ItemsInInv)
-			{
-				break;
-			}
-			else if (items[i] == null)                               // Check to see if there is a free slot in the inventory, null being a free slot
-			{
-				items[i] = Input;                               // adds the item to the free slot
-
-				if (!Input.IsSpriteNull(Input.ItemInvImage))
-				{
-					ItemImages[i].sprite = Input.ItemInvImage;
-				}
-				else
-				{
-					ItemImages[i].sprite = Input.ItemSprite;
-				}
-
-				ItemImages[i].enabled = true;
-				ItemsInInv = true;
-				break;
-			}
-
-			Input.gameObject.SetActive(true);
-
-			if (Input.gameObject.GetComponent<SpriteRenderer>())
-			{
-				Input.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-			}
-			else if (Input.gameObject.GetComponent<PolygonCollider2D>())
-			{
-				Input.gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+				Input.RemoveItemFromInv();
 			}
 		}
     }
@@ -157,7 +143,7 @@ public class InventoryScript : MonoBehaviour
 				}
 
 				items[i].gameObject.GetComponent<Item>().enabled = true;
-				items[i] = null;                                // removes the item from the inventory returning it to null
+				items[i] = null;										// removes the item from the inventory returning it to null
 				ItemImages[i].sprite = null;                           // removes the image for the inventory slot, reutrning it to null
 				ItemImages[i].enabled = false;
 

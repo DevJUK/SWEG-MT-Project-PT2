@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class PauseGameScript : MonoBehaviour
 {
 	public GameObject PauseUI;
+	public SaveScript Save;
 	private bool IsPaused;
 
 	private void Start()
 	{
 		PauseUI.SetActive(false);
+		if (FindObjectOfType<SaveScript>()) { Save = FindObjectOfType<SaveScript>(); }
 	}
 
 	void Update()
@@ -33,6 +35,12 @@ public class PauseGameScript : MonoBehaviour
 		}
 	}
 
+
+	public void SaveTheGame()
+	{
+		Save.SaveGame();
+	}
+
 	public void Menu()
 	{
 		SceneManager.LoadSceneAsync(0);
@@ -41,5 +49,10 @@ public class PauseGameScript : MonoBehaviour
 	public void Quit()
 	{
 		Application.Quit();
+	}
+
+	public void ResumeTime()
+	{
+		Time.timeScale = 1;
 	}
 }

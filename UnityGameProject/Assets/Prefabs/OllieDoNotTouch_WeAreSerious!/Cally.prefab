@@ -83,13 +83,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed091e75a6526140900864a141ef5d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Range: 10
+  Range: 2
   UI: {fileID: 0}
+  Invent: {fileID: 0}
   PickupScript: {fileID: 0}
-  ThrowScript: {fileID: 0}
+  ThrowScript: {fileID: 4711494361031905577}
   NPCInteractionScrpt: {fileID: 376626674091198560}
   MirrorTipScript: {fileID: 0}
   NameofNPCHit: 
+  CharredRoomEventScrpt: {fileID: 0}
+  Interact: E - Interact
 --- !u!114 &6959393791471294460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2505,6 +2508,7 @@ GameObject:
   - component: {fileID: 540847310899648490}
   - component: {fileID: 376626674091198560}
   - component: {fileID: 376626674091198561}
+  - component: {fileID: 1773727096577235969}
   m_Layer: 0
   m_Name: Cally V1 Model@Idle
   m_TagString: Player
@@ -2606,6 +2610,9 @@ MonoBehaviour:
   JumpStrength: 0
   Boolon: {fileID: 0}
   Boolon2: {fileID: 0}
+  Joystickdeadzone: 0.1
+  Joysticksensativity: 2
+  Mousesensatiity: 2
   SpeedModifier: 1
 --- !u!114 &540847310899648494
 MonoBehaviour:
@@ -2774,6 +2781,19 @@ MonoBehaviour:
   MovementScript: {fileID: 540847310899648464}
   stopMouse: {fileID: 540847310899648494}
   MoveStop: {fileID: 0}
+--- !u!114 &1773727096577235969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540847310899648491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7abb0d561bf5d14895bf22c233bb106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PauseUI: {fileID: 0}
 --- !u!1 &540847310899648493
 GameObject:
   m_ObjectHideFlags: 0
