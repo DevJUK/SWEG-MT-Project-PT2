@@ -1,0 +1,9 @@
+research Lab Pseudo Code 
+
+1) Player Walks into room
+2) Player is locked into place facing Cyan Mirror
+3) Mirror asks for sacrifice 
+4) Player can choose an item to throw inside the mirror or none at all
+5a) if player chooses no item then the game carries on [End]
+5b) if the player chooses an item to throw the Mirror says thank you and gives box to player
+6) Player can then pick up box and open the box to find The Music Box
