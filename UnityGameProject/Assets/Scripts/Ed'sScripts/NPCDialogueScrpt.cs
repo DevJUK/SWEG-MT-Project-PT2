@@ -20,6 +20,8 @@ public class NPCDialogueScrpt : MonoBehaviour
     [Tooltip("Where in the NPC's diologue does the diologue need to start (must be set manually)")]
     public int NPCsStartingDiologuePath;
 
+    public bool EdIsCool;
+
     [Header("NPC Dialogue Lines")]
     [Tooltip("Put any dialogue you want the NPC to say in here, remember to use the in text triggers")]
     public List<string> NPCDialogue;

@@ -10831,6 +10831,7 @@ MonoBehaviour:
   Occultist: {fileID: 0}
   Mouse_Move: {fileID: 0}
   PlayerController: {fileID: 0}
+  NPCInteractionScrpt: {fileID: 0}
   StoppingDistance: 0
   Node1Marker: {fileID: 0}
   Node1Pos: {x: 0, y: 0, z: 0}
@@ -50210,6 +50211,48 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1137291339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137291337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd7dcb5549187e14d925931a1252dd02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NpcIDNumber: 5
+  NPCName: Policeman
+  PlayersStartingDiologuePath: 32
+  NPCsStartingDiologuePath: 0
+  NPCDialogue:
+  - Hands Up
+  - Who are you?
+  - '#Switch'
+  - '#Landing'
+  - Prove it
+  - '#Switch'
+  - '#Landing'
+  - Thats not proof, you could have stolen them
+  - '#Switch'
+  - '#Landing'
+  - Im the one holding the gun, I make the rules here!
+  - '#Switch'
+  - '#Landing'
+  - I'll arrest you
+  - '#Switch'
+  - '#Landing'
+  - Stop, I'll shoot!!
+  - '#Switch'
+  - '#Landing'
+  - You will be arrested for resisting the law
+  - '#Switch'
+  - '#Landing'
+  - Oh for fuck sake
+  - 'You stay here '
+  - '#End'
 --- !u!1001 &1138257609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58592,6 +58635,7 @@ GameObject:
   - component: {fileID: 1331620568}
   - component: {fileID: 1331620567}
   - component: {fileID: 1331620566}
+  - component: {fileID: 1331620569}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -58671,6 +58715,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331620564}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1331620569
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331620564}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1333932091 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4533641195211508527, guid: 4e1376bd3ed0d1849ae475ff8ee15fa8,
@@ -76266,6 +76326,131 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.size
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[32]
+      value: '#Landing'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[33]
+      value: My name is Cally, I own this house
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[34]
+      value: '#Switch'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[35]
+      value: '#Landing'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[36]
+      value: '*Cally shows the house keys to the policeman*'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[37]
+      value: '#Switch'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[38]
+      value: '#Landing'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[39]
+      value: Show me your police badge
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[40]
+      value: '#Switch'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[41]
+      value: '#Landing'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[42]
+      value: It's the law, you have too
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[43]
+      value: '#Switch'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[44]
+      value: '#Landing'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[45]
+      value: GoodBye
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[46]
+      value: '#Switch'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[47]
+      value: '#Landing'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[48]
+      value: Do it pussy you wont, all mouth
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[49]
+      value: '#Switch'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[50]
+      value: '#Landing'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[51]
+      value: You still didnt shoot us pussy
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[52]
+      value: '#End'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[53]
+      value: '#End'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[54]
+      value: '#End'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[31]
+      value: '#End'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 956539c4ebe48d740a3e2923f2fdef4c, type: 3}

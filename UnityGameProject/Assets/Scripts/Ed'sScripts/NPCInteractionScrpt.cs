@@ -447,11 +447,7 @@ public class NPCInteractionScrpt : MonoBehaviour
             Debug.Log("String contains true");
             BoolName.Replace("[true]", string.Empty); // Removing the true/false part to just leave the name of the bool being targeted
 
-            
-
-            // return testobject.GetType().GetProperty(BoolName).SetValue(testobject, true);
-            
-
+            SetBoolToTrue(BoolName);
         }
 
         else if (BoolName.Contains("[false]"))
@@ -495,6 +491,6 @@ public class NPCInteractionScrpt : MonoBehaviour
     {
         object testobject = null;
 
-        testobject.GetType().GetProperty(BoolName).SetValue(testobject, true);
+        testobject.GetType().GetProperty(Name).SetValue(testobject, true);
     }
 }
