@@ -82,6 +82,8 @@ public class NPCInteractionScrpt : MonoBehaviour
     public int InitialPlayerLine;
     public int InitialNPCLine;
 
+    private string BoolName;
+
     void Start()
     {
         // Make sure the dialogue box is empty when script is run
@@ -235,6 +237,12 @@ public class NPCInteractionScrpt : MonoBehaviour
             {
                 Debug.Log("Landing");
                 DialoguePath++;
+            }
+
+            else if (DialogueValue.Contains("#DoAction:")) // Used to Perform actions during set points in the dialogue
+            {
+                Debug.Log("Performing Action");
+                PerformAction();
             }
 
             else if (DialogueValue.Contains("#TConfirm:")) // Used to ask the player if they want to trade (could be expanded later to enable support for multiple dialogue options)
@@ -430,6 +438,29 @@ public class NPCInteractionScrpt : MonoBehaviour
         DialoguePath++;
     }
 
+    public void PerformAction()
+    {
+        BoolName = System.Convert.ToString(DialogueValue.Remove(0, 11)); // This bit is just removing the "DoAction:" part that will always be at the start
+
+        if (BoolName.Contains("[true]"))
+        {
+            Debug.Log("String contains true");
+            BoolName.Replace("[true]", string.Empty); // Removing the true/false part to just leave the name of the bool being targeted
+
+            
+
+            // return testobject.GetType().GetProperty(BoolName).SetValue(testobject, true);
+            
+
+        }
+
+        else if (BoolName.Contains("[false]"))
+        {
+            Debug.Log("String contains false");
+            BoolName.Replace("[false]", string.Empty); // Removing the true/false part to just leave the name of the bool being targeted
+        }
+    }
+
     public void TradeConfirmation() // Turns on canvas so dialogue option can be chosen 
     {
         // +++++++++++++++++++++++++++++++++++++++++++++++++++++++ Lock camera movement +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -458,5 +489,12 @@ public class NPCInteractionScrpt : MonoBehaviour
     public void StartTrading() // calls the trading script
     {
         // Call your code here sam!! +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    }
+
+    public void SetBoolToTrue(string Name)
+    {
+        object testobject = null;
+
+        testobject.GetType().GetProperty(BoolName).SetValue(testobject, true);
     }
 }
