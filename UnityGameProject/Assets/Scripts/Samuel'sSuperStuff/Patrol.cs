@@ -65,5 +65,16 @@ public class Patrol : FollowScript
 
         FollowObject = PatrolPoints[CurrentPoint].transform;
     }
-   
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        Entity User = other.GetComponent<Entity>();
+        if (User)
+        {
+            FollowObject = User.transform;
+        }
+
+    }
+
 }

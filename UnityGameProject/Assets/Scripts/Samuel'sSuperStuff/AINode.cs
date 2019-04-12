@@ -4,8 +4,7 @@ using UnityEngine;
 
 public enum EPointInstruction
 {
-    None,
-    Jump   
+    None  
 }
 
 
@@ -56,16 +55,7 @@ public class AINode : MonoBehaviour
         {
             case EPointInstruction.None:
                 Owner.GoToNextPoint();
-                break;
-
-
-            case EPointInstruction.Jump:
-                if (ShouldPerform())
-                {
-                    Ent.Jump();
-                }
-                Owner.GoToNextPoint();
-                break;            
+                break;                     
         }
 
     }
