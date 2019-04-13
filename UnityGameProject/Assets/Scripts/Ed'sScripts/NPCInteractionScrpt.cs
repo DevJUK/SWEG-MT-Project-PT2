@@ -448,6 +448,46 @@ public class NPCInteractionScrpt : MonoBehaviour
         DialoguePath++;
     }
 
+    public void TradeConfirmation() // Turns on canvas so dialogue option can be chosen 
+    {
+        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++ Lock camera movement +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        InteractionCanvas.SetActive(false);
+        DialogueOptionCanvas.SetActive(true);
+        Interacting = false;
+    }
+
+    public void PlayerPickedYes() // jumps the player to the dialogue in responce to them saying yes
+    {
+        DialoguePath++;
+        DialogueOptionCanvas.SetActive(false);
+        // InteractionCanvas.SetActive(true);
+        StartInteraction();
+    }
+
+    public void PlayerPickedNo() // jumps the player to the dialogue in responce to them saying no
+    {
+        int route = System.Convert.ToInt16(DialogueValue.Remove(0, 10));
+        DialoguePath = route;
+        DialogueOptionCanvas.SetActive(false);
+        // InteractionCanvas.SetActive(true);
+        StartInteraction();
+    }
+
+    public void StartTrading() // calls the trading script
+    {
+        // Call your code here sam!! +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    }
+
+    public void SplitString(string Unsplit)
+    {
+        Debug.Log("Spliting String");
+        string[] SplitArray = Unsplit.Split('-');
+        ScriptName = SplitArray[0];
+        Debug.Log("ScriptName = " + ScriptName);
+        BoolName = SplitArray[1];
+        Debug.Log("BoolName = " + BoolName);
+    }
+
     public void PerformAction()
     {
         // Input action using the format "DoAction: ScriptName-BoolName [true/false]
@@ -560,45 +600,5 @@ public class NPCInteractionScrpt : MonoBehaviour
             //BoolToChange = false; // Change the bool
             //Debug.Log("Bool value after: " + BoolToChange);
         }
-    }
-
-    public void TradeConfirmation() // Turns on canvas so dialogue option can be chosen 
-    {
-        // +++++++++++++++++++++++++++++++++++++++++++++++++++++++ Lock camera movement +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        InteractionCanvas.SetActive(false);
-        DialogueOptionCanvas.SetActive(true);
-        Interacting = false;
-    }
-
-    public void PlayerPickedYes() // jumps the player to the dialogue in responce to them saying yes
-    {
-        DialoguePath++;
-        DialogueOptionCanvas.SetActive(false);
-        // InteractionCanvas.SetActive(true);
-        StartInteraction();
-    }
-
-    public void PlayerPickedNo() // jumps the player to the dialogue in responce to them saying no
-    {
-        int route = System.Convert.ToInt16(DialogueValue.Remove(0, 10));
-        DialoguePath = route;
-        DialogueOptionCanvas.SetActive(false);
-        // InteractionCanvas.SetActive(true);
-        StartInteraction();
-    }
-
-    public void StartTrading() // calls the trading script
-    {
-        // Call your code here sam!! +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    }
-
-    public void SplitString(string Unsplit)
-    {
-        Debug.Log("Spliting String");
-        string[] SplitArray = Unsplit.Split('-');
-        ScriptName = SplitArray[0];
-        Debug.Log("ScriptName = " + ScriptName);
-        BoolName = SplitArray[1];
-        Debug.Log("BoolName = " + BoolName);
     }
 }

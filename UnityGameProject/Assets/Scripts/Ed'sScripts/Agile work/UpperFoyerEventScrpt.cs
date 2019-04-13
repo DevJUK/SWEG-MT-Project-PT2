@@ -39,6 +39,9 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     [Tooltip("How far the player will walk into the room")]
     public GameObject Node1Marker;
     public Vector3 Node1Pos;
+    [Tooltip("How far the player will walk away from the policeman")]
+    public GameObject NodeMarker2;
+    public Vector3 Node2Pos;
 
     private bool Prone;
     private bool PWalkAway;
@@ -56,6 +59,7 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     void Update()
     {
         UpdateNodePositions(); // Used to see where the characters will move to 
+        CheckBools();
 
         if (StartEvent)
         {
@@ -102,6 +106,27 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     public void UpdateNodePositions()
     {
         Node1Pos = Node1Marker.transform.position;
+    }
+
+    public void CheckBools()
+    {
+        if (PWalkAway)
+        {
+            ChangePWalkAwayBool();
+            GoToPosition(PlayerNavAgent, Node2Pos); // Runs the player character to node 2 
+        }
+
+        if (Prone)
+        {
+            // do stuff for being prone
+            ChangeProneBool();
+        }
+
+        if (Arrest)
+        {
+            // do stuff for being arrested
+            ChangeArrestBool();
+        }
     }
 
     public void ChangeProneBool()

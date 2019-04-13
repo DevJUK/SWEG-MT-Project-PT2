@@ -10827,7 +10827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  Policeman: {fileID: 0}
+  Policeman: {fileID: 1137291337}
   Occultist: {fileID: 0}
   Mouse_Move: {fileID: 0}
   PlayerController: {fileID: 0}
@@ -10835,6 +10835,8 @@ MonoBehaviour:
   StoppingDistance: 0
   Node1Marker: {fileID: 0}
   Node1Pos: {x: 0, y: 0, z: 0}
+  NodeMarker2: {fileID: 0}
+  Node2Pos: {x: 0, y: 0, z: 0}
 --- !u!1001 &211468742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33736,6 +33738,114 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 765028535}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &767293004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 767293005}
+  - component: {fileID: 767293009}
+  - component: {fileID: 767293008}
+  - component: {fileID: 767293007}
+  - component: {fileID: 767293006}
+  m_Layer: 0
+  m_Name: Node2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &767293005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767293004}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.32, y: -3.69, z: 5.1879997}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_Children: []
+  m_Father: {fileID: 1163375738}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &767293006
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767293004}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &767293007
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767293004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &767293008
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767293004}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100002, guid: 4b2f16b6849c0594e8227783546bd6ad, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &767293009
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767293004}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &771001941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50227,6 +50337,7 @@ MonoBehaviour:
   NPCName: Policeman
   PlayersStartingDiologuePath: 32
   NPCsStartingDiologuePath: 0
+  EdIsCool: 0
   NPCDialogue:
   - Hands Up
   - Who are you?
@@ -50248,6 +50359,7 @@ MonoBehaviour:
   - '#Switch'
   - '#Landing'
   - You will be arrested for resisting the law
+  - '#DoAction: UpperFoyerEventScrpt-Arrest[true]'
   - '#Switch'
   - '#Landing'
   - Oh for fuck sake
@@ -51628,6 +51740,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1331620565}
+  - {fileID: 767293005}
   m_Father: {fileID: 973436914}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58637,7 +58750,7 @@ GameObject:
   - component: {fileID: 1331620566}
   - component: {fileID: 1331620569}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Node1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76405,37 +76518,37 @@ PrefabInstance:
     - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
         type: 3}
       propertyPath: PlayerDialogue.Array.data[46]
-      value: '#Switch'
+      value: '#DoAction: UpperFoyerEventScrpt-PWalkAway[True]'
       objectReference: {fileID: 0}
     - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
         type: 3}
       propertyPath: PlayerDialogue.Array.data[47]
-      value: '#Landing'
-      objectReference: {fileID: 0}
-    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
-        type: 3}
-      propertyPath: PlayerDialogue.Array.data[48]
-      value: Do it pussy you wont, all mouth
-      objectReference: {fileID: 0}
-    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
-        type: 3}
-      propertyPath: PlayerDialogue.Array.data[49]
       value: '#Switch'
       objectReference: {fileID: 0}
     - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
         type: 3}
-      propertyPath: PlayerDialogue.Array.data[50]
+      propertyPath: PlayerDialogue.Array.data[48]
       value: '#Landing'
       objectReference: {fileID: 0}
     - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
         type: 3}
+      propertyPath: PlayerDialogue.Array.data[49]
+      value: Do it pussy you wont, all mouth
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
+      propertyPath: PlayerDialogue.Array.data[50]
+      value: '#Switch'
+      objectReference: {fileID: 0}
+    - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
+        type: 3}
       propertyPath: PlayerDialogue.Array.data[51]
-      value: You still didnt shoot us pussy
+      value: '#Landing'
       objectReference: {fileID: 0}
     - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
         type: 3}
       propertyPath: PlayerDialogue.Array.data[52]
-      value: '#End'
+      value: You still didnt shoot us pussy
       objectReference: {fileID: 0}
     - target: {fileID: 376626674091198560, guid: 956539c4ebe48d740a3e2923f2fdef4c,
         type: 3}
