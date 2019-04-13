@@ -40,6 +40,10 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     public GameObject Node1Marker;
     public Vector3 Node1Pos;
 
+    private bool Prone;
+    private bool PWalkAway;
+    private bool Arrest;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,5 +102,20 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     public void UpdateNodePositions()
     {
         Node1Pos = Node1Marker.transform.position;
+    }
+
+    public void ChangeProneBool()
+    {
+        Prone = !Prone;
+    }
+
+    public void ChangePWalkAwayBool()
+    {
+        PWalkAway = !PWalkAway;
+    }
+
+    public void ChangeArrestBool()
+    {
+        Arrest = !Arrest;
     }
 }

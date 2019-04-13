@@ -30742,7 +30742,7 @@ MonoBehaviour:
   EdIsCool: 0
   NPCDialogue:
   - Doing action
-  - '#DoAction: EdIsCool[true]'
+  - '#DoAction: NPCDialogueScrpt-EdIsCool[true]'
   - Action done
   - 
   - 

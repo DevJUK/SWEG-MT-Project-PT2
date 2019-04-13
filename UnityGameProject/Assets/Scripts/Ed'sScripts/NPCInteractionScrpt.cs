@@ -1,7 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
+
+public enum UFEBools { Prone, PWalkAway, Arrest}
 
 public class NPCInteractionScrpt : MonoBehaviour
 {
@@ -82,7 +86,13 @@ public class NPCInteractionScrpt : MonoBehaviour
     public int InitialPlayerLine;
     public int InitialNPCLine;
 
+    // Info needed for Do Action function
+    private string ActionInfo;
+    private string ScriptName;
     private string BoolName;
+    private GameObject AccessedScript;
+    private bool BoolToChange;
+    private UFEBools UFESwitch;
 
     void Start()
     {
@@ -440,20 +450,115 @@ public class NPCInteractionScrpt : MonoBehaviour
 
     public void PerformAction()
     {
-        BoolName = System.Convert.ToString(DialogueValue.Remove(0, 11)); // This bit is just removing the "DoAction:" part that will always be at the start
+        // Input action using the format "DoAction: ScriptName-BoolName [true/false]
 
-        if (BoolName.Contains("[true]"))
+        Debug.Log("Do action string before remove: " + DialogueValue);
+
+        ActionInfo = System.Convert.ToString(DialogueValue.Remove(0, 11)); // This bit is just removing the "DoAction:" part that will always be at the start
+
+        Debug.Log("Do action string acter remove: " + ActionInfo);
+
+        if (ActionInfo.Contains("[true]"))
         {
             Debug.Log("String contains true");
-            BoolName.Replace("[true]", string.Empty); // Removing the true/false part to just leave the name of the bool being targeted
+            ActionInfo = ActionInfo.Replace("[true]", string.Empty); // Removing the true/false part to just leave the name of the bool being targeted
 
-            SetBoolToTrue(BoolName);
+            Debug.Log("Action Info after removing [true]: " + ActionInfo);
+
+            SplitString(ActionInfo); // Split the string into two parts (Script name & Bool name)
+
+            Type ScriptNameAsT = Assembly.GetExecutingAssembly().GetType(ScriptName); // changing string to a type
+            Debug.Log("Script name as type: " + ScriptNameAsT);
+
+            var Scripts = FindObjectsOfType(Assembly.GetExecutingAssembly().GetType(ScriptName));
+            foreach (var item in Scripts)
+            {
+                if (item.GetType() == typeof(UpperFoyerEventScrpt))
+                {
+                    UpperFoyerEventScrpt T = item as UpperFoyerEventScrpt;
+
+                    UFEBools parsed_enum = (UFEBools)System.Enum.Parse(typeof(UFEBools), BoolName); // Converting string to enum so switch can be set
+                    Debug.Log("Bool name: " + BoolName + "Parsed enum: " + parsed_enum);
+
+                    UFESwitch = parsed_enum;
+                    switch (UFESwitch)
+                    {
+                        case UFEBools.Prone:
+                            T.ChangeProneBool();
+                            break;
+
+                        case UFEBools.PWalkAway:
+                            T.ChangePWalkAwayBool();
+                            break;
+
+                        case UFEBools.Arrest:
+                            T.ChangeArrestBool();
+                            break;
+                    }
+                }
+            }
+
+            ////AccessedScript = GameObject.FindObjectsOfType<ScriptNameAsT>();
+
+            //// Uses values of string ScriptName & string BoolName to find needed script
+            //AccessedScript = GameObject.Find(ScriptName); // find the script with the name we want
+            //Debug.Log("Name of script: " + AccessedScript);
+
+            //BoolToChange = AccessedScript.GetComponent(BoolName); // Find the bool we want
+            //Debug.Log("Bool value before: " + BoolToChange);
+            //BoolToChange = true; // Change the bool
+            //Debug.Log("Bool value after: " + BoolToChange);
+
         }
 
-        else if (BoolName.Contains("[false]"))
+        else if (ActionInfo.Contains("[false]"))
         {
             Debug.Log("String contains false");
-            BoolName.Replace("[false]", string.Empty); // Removing the true/false part to just leave the name of the bool being targeted
+            ActionInfo.Replace("[false]", string.Empty); // Removing the true/false part to just leave the name of the bool being targeted
+
+            Debug.Log("Action Info after second remove: " + ActionInfo);
+
+            SplitString(ActionInfo); // Split the string into two parts (Script name & Bool name)
+
+            Type ScriptNameAsT = Assembly.GetExecutingAssembly().GetType(ScriptName); // changing string to a type
+            Debug.Log("Script name as type: " + ScriptNameAsT);
+
+            var Scripts = FindObjectsOfType(Assembly.GetExecutingAssembly().GetType(ScriptName));
+            foreach (var item in Scripts)
+            {
+                if (item.GetType() == typeof(UpperFoyerEventScrpt))
+                {
+                    UpperFoyerEventScrpt T = item as UpperFoyerEventScrpt;
+
+                    UFEBools parsed_enum = (UFEBools)System.Enum.Parse(typeof(UFEBools), BoolName); // Converting string to enum so switch can be set
+                    Debug.Log("Bool name: " + BoolName + "Parsed enum: " + parsed_enum);
+
+                    UFESwitch = parsed_enum;
+                    switch (UFESwitch)
+                    {
+                        case UFEBools.Prone:
+                            T.ChangeProneBool();
+                            break;
+
+                        case UFEBools.PWalkAway:
+                            T.ChangePWalkAwayBool();
+                            break;
+
+                        case UFEBools.Arrest:
+                            T.ChangeArrestBool();
+                            break;
+                    }
+                }
+            }
+
+            //// Uses values of string ScriptName & string BoolName to find needed script
+            //AccessedScript = GameObject.Find(ScriptName); // find the script with the name we want
+            //Debug.Log("Name of script: " + AccessedScript);
+
+            //BoolToChange = AccessedScript.GetComponent(BoolName); // Find the bool we want
+            //Debug.Log("Bool value before: " + BoolToChange);
+            //BoolToChange = false; // Change the bool
+            //Debug.Log("Bool value after: " + BoolToChange);
         }
     }
 
@@ -487,10 +592,13 @@ public class NPCInteractionScrpt : MonoBehaviour
         // Call your code here sam!! +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     }
 
-    public void SetBoolToTrue(string Name)
+    public void SplitString(string Unsplit)
     {
-        object testobject = null;
-
-        testobject.GetType().GetProperty(Name).SetValue(testobject, true);
+        Debug.Log("Spliting String");
+        string[] SplitArray = Unsplit.Split('-');
+        ScriptName = SplitArray[0];
+        Debug.Log("ScriptName = " + ScriptName);
+        BoolName = SplitArray[1];
+        Debug.Log("BoolName = " + BoolName);
     }
 }
