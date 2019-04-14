@@ -43,9 +43,12 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     public GameObject NodeMarker2;
     public Vector3 Node2Pos;
 
+    public float ProneValue;
+
     private bool Prone;
     private bool PWalkAway;
     private bool Arrest;
+    private bool OcultistTalk;
 
     // Start is called before the first frame update
     void Start()
@@ -64,13 +67,20 @@ public class UpperFoyerEventScrpt : MonoBehaviour
         if (StartEvent)
         {
             LockInputs();
+
+            // Switch to wide angle camera 
+
             GoToPosition(PlayerNavAgent, Node1Pos); // Player walks into the room
 
             RunAtCharacter(PoliceNavAgent, PlayerNavAgent.transform.position); // Policeman runs up to player 
 
             NPCInteractionScrpt.StartInteraction(); // Start dialogue with the policeman
 
-
+            if (OcultistTalk)
+            {
+                // Switch back to player camera 
+                NPCInteractionScrpt.StartInteraction(Occultist);
+            }
 
         }
     }
@@ -118,13 +128,19 @@ public class UpperFoyerEventScrpt : MonoBehaviour
 
         if (Prone)
         {
-            // do stuff for being prone
-            ChangeProneBool();
+            // Cheating and just lowering the chracter into the floor
+            Player.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y - ProneValue, Player.transform.position.z);
+        }
+
+        if (!Prone)
+        {
+            Player.transform.position = Player.transform.position;
         }
 
         if (Arrest)
         {
             // do stuff for being arrested
+            RunAtCharacter(PoliceNavAgent, PlayerNavAgent.transform.position);
             ChangeArrestBool();
         }
     }
@@ -142,5 +158,10 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     public void ChangeArrestBool()
     {
         Arrest = !Arrest;
+    }
+
+    public void TalkWithOcultist()
+    {
+        OcultistTalk = true;
     }
 }
