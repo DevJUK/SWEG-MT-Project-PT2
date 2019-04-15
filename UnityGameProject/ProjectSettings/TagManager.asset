@@ -10,6 +10,7 @@ TagManager:
   - NPC
   - Mirror
   - CharredMirror
+  - Object
   layers:
   - Default
   - TransparentFX
