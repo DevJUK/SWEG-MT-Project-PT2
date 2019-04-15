@@ -20,6 +20,8 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     public PlayerController PlayerController;
     [Tooltip("Drag the players model here")]
     public NPCInteractionScrpt NPCInteractionScrpt;
+    [Tooltip("Drag Inventory game object here")]
+    public InventoryScript InventoryScript;
 
     private bool StartEvent = false;
 
@@ -49,6 +51,10 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     private bool PWalkAway;
     private bool Arrest;
     private bool OcultistTalk;
+    private bool TakeCrystalBall;
+    private bool GiveKeys;
+    private bool GiveHandcuffs;
+    private Vector3 CharacterPos;
 
     // Start is called before the first frame update
     void Start()
@@ -79,6 +85,10 @@ public class UpperFoyerEventScrpt : MonoBehaviour
             if (OcultistTalk)
             {
                 // Switch back to player camera 
+                RunAtCharacter(OcultistNavAgent, PlayerNavAgent.transform.position); // Ocultist runs over to player
+
+                CharacterPos = new Vector3(PlayerPos.x, OcultistPos.y, PlayerPos.z);
+                if (Occultist.transform.position == CharacterPos) // if ocultist is infront of player start interaction
                 NPCInteractionScrpt.StartInteraction(Occultist);
             }
 
@@ -104,7 +114,7 @@ public class UpperFoyerEventScrpt : MonoBehaviour
 
     public void RunAtCharacter(NavMeshAgent RunningCharacter, Vector3 TargetCharacter)
     {
-        Vector2 CharacterPos = new Vector2 (TargetCharacter.x + StoppingDistance, TargetCharacter.z + StoppingDistance);
+        CharacterPos = new Vector2 (TargetCharacter.x + StoppingDistance, TargetCharacter.z + StoppingDistance);
         RunningCharacter.destination = CharacterPos; // Running chracter will run at target character until they reach the stopping distance
     }
 
@@ -143,6 +153,23 @@ public class UpperFoyerEventScrpt : MonoBehaviour
             RunAtCharacter(PoliceNavAgent, PlayerNavAgent.transform.position);
             ChangeArrestBool();
         }
+
+        if (TakeCrystalBall)
+        {
+            RemoveCrystalBall();
+        }
+
+        if (GiveKeys)
+        {
+            GivePlayerKeys();
+        }
+
+        if (GiveHandcuffs)
+        {
+            GivePlayerHandcuffs();
+        }
+
+
     }
 
     public void ChangeProneBool()
@@ -163,5 +190,20 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     public void TalkWithOcultist()
     {
         OcultistTalk = true;
+    }
+
+    public void RemoveCrystalBall()
+    {
+
+    }
+
+    public void GivePlayerKeys()
+    {
+
+    }
+
+    public void GivePlayerHandcuffs()
+    {
+
     }
 }
