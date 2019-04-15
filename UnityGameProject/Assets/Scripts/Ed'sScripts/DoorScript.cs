@@ -10,7 +10,9 @@ public class DoorScript : MonoBehaviour
 	public bool PlayerInTrigger;
 
 	public List<GameObject> Doors;
+    public GameObject DoorLockedUI;
 
+    public float LockedTimer = 0.0f;
 
 	private void Update()
 	{
@@ -32,6 +34,19 @@ public class DoorScript : MonoBehaviour
 		if (Locked)
 		{
 			Debug.Log("The door is locked");
+
+            // -- Oliver Addition Start -- 
+            if (Input.GetButton("Pickup"))
+            {
+                DoorLockedUI.SetActive(true);
+                LockedTimer = 5.0f;
+            }
+
+            if (LockedTimer <= 0.0f)
+            {
+                DoorLockedUI.SetActive(false);
+            }
+            // -- Oliver Addition End --
 		}
 		else
 		{
