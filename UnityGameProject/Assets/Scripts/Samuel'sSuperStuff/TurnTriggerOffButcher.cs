@@ -16,7 +16,7 @@ public class TurnTriggerOffButcher : MonoBehaviour
 
     private void Update()
     {
-        StartCoroutine(BoxOff());       
+        StartCoroutine(BoxOff());
     }
 
     IEnumerator BoxOff()
