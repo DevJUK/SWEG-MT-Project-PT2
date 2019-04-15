@@ -7,7 +7,6 @@ public class Event_Start : MonoBehaviour
     public bool Event;
     //public GameObject Player;
     public PlayerController MovementScript;
-	public Stats StatsScript;
     public Mouse_Move stopMouse;
     public Enemy_Move AIMovment;
     //public Entity AnimStop;
@@ -27,10 +26,13 @@ public class Event_Start : MonoBehaviour
     public FlyingPans PansMove12;
     public GameObject Butcher;
     public float ButcherTimer;
+    private Stats StatsScript;
 
-	// Jonathan Addition
-	public BloodSplatterScript Blood;
 
+    private void Start()
+    {
+        StatsScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Stats>();
+    }
 
     void Update()
     {
@@ -53,6 +55,12 @@ public class Event_Start : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+
+
+            
+
+
+            Debug.Log("running");
             MovementScript.enabled = false;
             stopMouse.enabled = false;
             PansMove.enabled = true;
@@ -69,11 +77,7 @@ public class Event_Start : MonoBehaviour
             PansMove12.enabled = true;
             
             Event = true;
-
             StatsScript.Health -= 1;
-
-			//Jonathan Additon for Blood
-			Blood.Hit = true;
         }        
     }
 }

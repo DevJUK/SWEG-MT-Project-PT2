@@ -33,14 +33,14 @@ public class Enemy_Move : MonoBehaviour
                 if (enemy.remainingDistance != Mathf.Infinity && enemy.remainingDistance <= enemy.stoppingDistance)
                 {
                     enemy.destination = Player.transform.position;
-                    //anim.SetBool("IsWalking", false);
+                    anim.SetBool("IsWalking", false);
                     
                     
                     //anim.SetBool("Attack", true);
                 }
                 else 
                 {
-                    //anim.SetBool("IsWalking", true);
+                    anim.SetBool("IsWalking", true);
                     //anim.SetBool("Attack", false);
                     enemy.destination = Player.transform.position;
                     
@@ -55,15 +55,4 @@ public class Enemy_Move : MonoBehaviour
        //     //enemy.destination = enemy.destination;
        // }
     }
-
-
-
-	// Jonathan Addition to make the event end and the player able to move again.
-	private void OnCollisionEnter(Collision collision)
-	{
-		if (collision.gameObject.tag == "Player")
-		{
-			enabled = false;
-		}
-	}
 }
