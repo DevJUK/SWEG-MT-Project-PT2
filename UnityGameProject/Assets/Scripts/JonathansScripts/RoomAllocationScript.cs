@@ -16,7 +16,7 @@ public class RoomAllocationScript : MonoBehaviour
 	public string[] Rooms = new string[]
 	{
 		"GrdEnt", "GrdStr", "GrdA", "GrdB", "GrdC", "GrdD", "GrdE", "GrdF", "GrdG",
-		"UppFoy", "UppA", "UppB", "UppC", "UppD", "UppE", "UppF", "UppG", "UppH", "UppI", "UppJ", "UppK",
+		"UppFoy", "UppA", "UppB", "UppC", "UppD", "UppE", "UppF", "UppG", "UppH", "UppI", "UppJ", "UppK", "UppCorr",
 		"BseLnd", "BseA", "BseB", "BseC", "BseD", "BseE", "BseF"
 	};
 

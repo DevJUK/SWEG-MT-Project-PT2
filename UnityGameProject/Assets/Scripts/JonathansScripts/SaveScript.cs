@@ -14,6 +14,7 @@ public class SaveScript : MonoBehaviour
 	public GameObject Player;
 	public RoomAllocationScript RAS;
 	public InventoryScript Invent;
+	private bool IsCoRunning;
 
 
 	private void Awake()
@@ -57,23 +58,33 @@ public class SaveScript : MonoBehaviour
 
 		// Room Data
 		Data.PlayerRoom = RAS.Locations[0, 1];
-		Data.MirandaRoom = RAS.Locations[1, 1];
-		Data.PolicemanRoom = RAS.Locations[2, 1];
-		Data.WitchRoom = RAS.Locations[3, 1];
-		Data.CatRoom = RAS.Locations[4, 1];
-		Data.KyleRoom = RAS.Locations[5, 1];
+		//Data.MirandaRoom = RAS.Locations[1, 1];
+		//Data.PolicemanRoom = RAS.Locations[2, 1];
+		//Data.WitchRoom = RAS.Locations[3, 1];
+		//Data.CatRoom = RAS.Locations[4, 1];
+		//Data.KyleRoom = RAS.Locations[5, 1];
+
+		// Player Pos
+		Data.PlayerX = Player.transform.position.x;
+		Data.PlayerY = Player.transform.position.y;
+		Data.PlayerZ = Player.transform.position.z;
+
+		Data.PlayerRotX = Player.transform.rotation.x;
+		Data.PlayerRotY = Player.transform.rotation.y;
+		Data.PlayerRotZ = Player.transform.rotation.z;
+
 
 		// Invert Data
-		//Data.Item0 = Invent.items[0].ItemObject;
-		//Data.Item1 = Invent.items[1].ItemObject;
-		//Data.Item2 = Invent.items[2].ItemObject;
-		//Data.Item3 = Invent.items[3].ItemObject;
-		//Data.Item4 = Invent.items[4].ItemObject;
-		//Data.Item5 = Invent.items[5].ItemObject;
-		//Data.Item6 = Invent.items[6].ItemObject;
-		//Data.Item7 = Invent.items[7].ItemObject;
-		//Data.Item8 = Invent.items[8].ItemObject;
-		//Data.Item9 = Invent.items[9].ItemObject;
+		//Data.Item0 = Invent.items[0].Data;
+		//Data.Item1 = Invent.items[1].Data;
+		//Data.Item2 = Invent.items[2].Data;
+		//Data.Item3 = Invent.items[3].Data;
+		//Data.Item4 = Invent.items[4].Data;
+		//Data.Item5 = Invent.items[5].Data;
+		//Data.Item6 = Invent.items[6].Data;
+		//Data.Item7 = Invent.items[7].Data;
+		//Data.Item8 = Invent.items[8].Data;
+		//Data.Item9 = Invent.items[9].Data;
 
 		//Data.Image0 = Invent.ItemImages[0].sprite;
 		//Data.Image1 = Invent.ItemImages[1].sprite;
@@ -125,7 +136,7 @@ public class SaveScript : MonoBehaviour
 			switch (Data.PlayerRoom)
 			{
 				case string a when a.Contains("Grd"):
-					SceneManager.LoadSceneAsync("GroudFloorScene");
+					SceneManager.LoadSceneAsync("GroundFloorScene");
 					break;
 				case string a when a.Contains("Upp"):
 					SceneManager.LoadSceneAsync("UpperFloorScene");
@@ -142,36 +153,36 @@ public class SaveScript : MonoBehaviour
 			//Player.transform.position = Data.PlayerPos;
 
 			//// Stats Data
-			Player.GetComponentInChildren<Stats>().Health = Data.Health;
-			Player.GetComponentInChildren<Stats>().Sanity = Data.Sanity;
-			Player.GetComponentInChildren<Stats>().Strength = Data.Strenght;
-			Player.GetComponentInChildren<Stats>().Agility = Data.Agility;
-			Player.GetComponentInChildren<Stats>().Intelligence = Data.Intelligence;
-			Player.GetComponentInChildren<Stats>().Willpower = Data.Willpower;
-			Player.GetComponentInChildren<Stats>().Perception = Data.Perception;
-			Player.GetComponentInChildren<Stats>().Charisma = Data.Charisma;
+
 
 			//ControllerScript.ReactorTotalPoints = Data.Score;
 
 			// Room Data
 			RAS.Locations[0, 1] = Data.PlayerRoom;
-			RAS.Locations[1, 1] = Data.MirandaRoom;
-			RAS.Locations[2, 1] = Data.PolicemanRoom;
-			RAS.Locations[3, 1] = Data.WitchRoom;
-			RAS.Locations[4, 1] = Data.CatRoom;
-			RAS.Locations[5, 1] = Data.KyleRoom;
+			//RAS.Locations[1, 1] = Data.MirandaRoom;
+			//RAS.Locations[2, 1] = Data.PolicemanRoom;
+			//RAS.Locations[3, 1] = Data.WitchRoom;
+			//RAS.Locations[4, 1] = Data.CatRoom;
+			//RAS.Locations[5, 1] = Data.KyleRoom;
+
+			// Player Pos
+
+			if (!IsCoRunning)
+			{
+				StartCoroutine(OnSceneLoaded(Data));
+			}
 
 			// Invent Data
-			//Invent.items[0].ItemObject = Data.Item0;
-			//Invent.items[1].ItemObject = Data.Item1;
-			//Invent.items[2].ItemObject = Data.Item2;
-			//Invent.items[3].ItemObject = Data.Item3;
-			//Invent.items[4].ItemObject = Data.Item4;
-			//Invent.items[5].ItemObject = Data.Item5;
-			//Invent.items[6].ItemObject = Data.Item6;
-			//Invent.items[7].ItemObject = Data.Item7;
-			//Invent.items[8].ItemObject = Data.Item8;
-			//Invent.items[9].ItemObject = Data.Item9;
+			//Invent.items[0].Data = Data.Item0;
+			//Invent.items[1].Data = Data.Item1;
+			//Invent.items[2].Data = Data.Item2;
+			//Invent.items[3].Data = Data.Item3;
+			//Invent.items[4].Data = Data.Item4;
+			//Invent.items[5].Data = Data.Item5;
+			//Invent.items[6].Data = Data.Item6;
+			//Invent.items[7].Data = Data.Item7;
+			//Invent.items[8].Data = Data.Item8;
+			//Invent.items[9].Data = Data.Item9;
 
 			//Invent.ItemImages[0].sprite = Data.Image0;
 			//Invent.ItemImages[1].sprite = Data.Image1;
@@ -193,6 +204,26 @@ public class SaveScript : MonoBehaviour
 	}
 
 
+
+	private IEnumerator OnSceneLoaded(GameData Data)
+	{
+		IsCoRunning = true;
+		yield return new WaitForSeconds(1);
+		Player = GameObject.FindGameObjectWithTag("Player");
+
+		Player.transform.position = new Vector3(Data.PlayerX, Data.PlayerY, Data.PlayerZ);
+		Player.transform.rotation = new Quaternion(Data.PlayerRotX, Data.PlayerRotY, Data.PlayerRotZ, 0);
+
+		Player.GetComponentInChildren<Stats>().Health = Data.Health;
+		Player.GetComponentInChildren<Stats>().Sanity = Data.Sanity;
+		Player.GetComponentInChildren<Stats>().Strength = Data.Strenght;
+		Player.GetComponentInChildren<Stats>().Agility = Data.Agility;
+		Player.GetComponentInChildren<Stats>().Intelligence = Data.Intelligence;
+		Player.GetComponentInChildren<Stats>().Willpower = Data.Willpower;
+		Player.GetComponentInChildren<Stats>().Perception = Data.Perception;
+		Player.GetComponentInChildren<Stats>().Charisma = Data.Charisma;
+		IsCoRunning = false;
+	}
 }
 
 // holds things we wanna save :)
@@ -214,23 +245,31 @@ class GameData
 
 	// Rooms in
 	public string PlayerRoom;
-	public string MirandaRoom;
-	public string PolicemanRoom;
-	public string KyleRoom;
-	public string WitchRoom;
-	public string CatRoom;
+	//public string MirandaRoom;
+	//public string PolicemanRoom;
+	//public string KyleRoom;
+	//public string WitchRoom;
+	//public string CatRoom;
+
+	public float PlayerX;
+	public float PlayerY;
+	public float PlayerZ;
+
+	public float PlayerRotX;
+	public float PlayerRotY;
+	public float PlayerRotZ;
 
 	// Invent Data
-	//public GameObject Item0;
-	//public GameObject Item1;
-	//public GameObject Item2;
-	//public GameObject Item3;
-	//public GameObject Item4;
-	//public GameObject Item5;
-	//public GameObject Item6;
-	//public GameObject Item7;
-	//public GameObject Item8;
-	//public GameObject Item9;
+	//public ItemData Item0;
+	//public ItemData Item1;
+	//public ItemData Item2;
+	//public ItemData Item3;
+	//public ItemData Item4;
+	//public ItemData Item5;
+	//public ItemData Item6;
+	//public ItemData Item7;
+	//public ItemData Item8;
+	//public ItemData Item9;
 
 	//public Sprite Image0;
 	//public Sprite Image1;

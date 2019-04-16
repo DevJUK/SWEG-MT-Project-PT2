@@ -10,6 +10,12 @@ public class RoomTracker : MonoBehaviour
 	public int CharacterID;
 	public string RoomIn;
 
+
+	private void Awake()
+	{
+		RAS = FindObjectOfType<RoomAllocationScript>();
+	}
+
 	private void Start()
 	{
 		if (!FindObjectOfType<RoomAllocationScript>())
@@ -101,6 +107,10 @@ public class RoomTracker : MonoBehaviour
 				case string a when a.Contains("^RoomI"):
 					RoomIn = "UppI";
 					RAS.Locations[CharacterID, 1] = "UppI";
+					break;
+				case string a when a.Contains("Corridor"):
+					RoomIn = "UppCorr";
+					RAS.Locations[CharacterID, 1] = "UppCorr";
 					break;
 
 				// Basement Rooms

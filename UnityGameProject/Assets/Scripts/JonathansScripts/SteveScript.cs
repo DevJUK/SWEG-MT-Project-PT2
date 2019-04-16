@@ -20,6 +20,13 @@ public class SteveScript : MonoBehaviour
 	private string[] Talk = new string[] { "Book: take me with you", "Cally: whats your name", "Steve: My name is Steve" };
 
 
+
+	private void Start()
+	{
+		Player = GameObject.FindGameObjectWithTag("Player");
+		ZeText = GameObject.Find("PickupPopup").GetComponent<Text>();
+	}
+
 	private void Update()
 	{
 		// Starts Co (ensures it only gets called once with a bool)
