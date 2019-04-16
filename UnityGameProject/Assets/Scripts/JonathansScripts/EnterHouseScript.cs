@@ -23,20 +23,25 @@ public class EnterHouseScript : MonoBehaviour
 			case Rooms.Outside:
 				break;
 			case Rooms.Ground:
-				if ((collision.gameObject.tag == "Player") && (!Darkness.GetComponent<FadeTransitionScript>().IsCoRunning))
+				if ((collision.gameObject.tag == "Player"))
 				{
-					Darkness.GetComponent<FadeTransitionScript>().StartCoroutine(Darkness.GetComponent<FadeTransitionScript>().GoDark());
-					SceneManager.LoadSceneAsync("GroundFloorScene");
+					Darkness.GetComponent<FadeTransitionScript>().GoDark();
+					SceneManager.LoadScene("GroundFloorScene");
 				}
 				break;
 			case Rooms.Upper:
-				if ((collision.gameObject.tag == "Player") && (!Darkness.GetComponent<FadeTransitionScript>().IsCoRunning))
+				if ((collision.gameObject.tag == "Player"))
 				{
-					Darkness.GetComponent<FadeTransitionScript>().StartCoroutine(Darkness.GetComponent<FadeTransitionScript>().GoDark());
-					SceneManager.LoadSceneAsync("UpperFloorScene");
+					Darkness.GetComponent<FadeTransitionScript>().GoDark();
+					SceneManager.LoadScene("UpperFloorScene");
 				}
 				break;
 			case Rooms.Basement:
+				if ((collision.gameObject.tag == "Player"))
+				{
+					Darkness.GetComponent<FadeTransitionScript>().GoDark();
+					SceneManager.LoadScene("BasementScene");
+				}
 				break;
 			case Rooms.End:
 				break;

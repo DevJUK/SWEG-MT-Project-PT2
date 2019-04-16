@@ -9,17 +9,18 @@ public class MenuController : MonoBehaviour
 
 	public Animator Anim;
 	public GameObject Canvas;
+	public Animator DarkAnim;
 
 
 	public void PlayPressed()
 	{
-		Canvas.SetActive(false);
+		DarkAnim.SetTrigger("GoDark");
 		Anim.SetTrigger("PlayGame");
 	}
 
 	public void LoadScene()
 	{
-		SceneManager.LoadSceneAsync("Loading");
+		SceneManager.LoadScene("GroundFloorScene");
 	}
 
 	public void QuitGame()

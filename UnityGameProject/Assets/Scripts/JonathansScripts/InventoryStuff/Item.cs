@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-
 public class Item : MonoBehaviour
 {
 	public string ItemName;
@@ -13,8 +12,9 @@ public class Item : MonoBehaviour
 	public Sprite ItemInvImage;
 	public GameObject ItemObject;
 	public bool IsNotCollectable;
+	//public ItemData Data = new ItemData();
 
-	private InventoryScript InvScript;
+	public InventoryScript InvScript;
 
 
 	public void Start()                            // Setting up the item when it is on a object to have default values
@@ -32,6 +32,13 @@ public class Item : MonoBehaviour
 		{
 			ItemName = gameObject.name;
 		}
+
+		//Data.ItemName = ItemName;
+		//Data.ItemDesc = ItemDesc;
+		//Data.ItemSprite = ItemSprite;
+		//Data.ItemInvImage = ItemInvImage;
+		//Data.ItemObject = ItemObject;
+		//Data.IsNotCollectable = IsNotCollectable;
 	}
 
 
@@ -64,3 +71,14 @@ public class Item : MonoBehaviour
 		else { return true; }
 	}
 }
+
+//[SerializeField]
+//public class ItemData
+//{
+//	public string ItemName;
+//	public string ItemDesc;
+//	public Sprite ItemSprite;
+//	public Sprite ItemInvImage;
+//	public GameObject ItemObject;
+//	public bool IsNotCollectable;
+//}

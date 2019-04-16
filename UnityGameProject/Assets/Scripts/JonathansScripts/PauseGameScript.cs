@@ -9,9 +9,10 @@ public class PauseGameScript : MonoBehaviour
 	public SaveScript Save;
 	private bool IsPaused;
 
+
 	private void Start()
 	{
-		PauseUI.SetActive(false);
+		if (GameObject.Find("PauseUI")) { PauseUI = GameObject.Find("PauseUI"); }
 		if (FindObjectOfType<SaveScript>()) { Save = FindObjectOfType<SaveScript>(); }
 	}
 
@@ -22,7 +23,7 @@ public class PauseGameScript : MonoBehaviour
 			// Pauses the game
 			Time.timeScale = 0;
 			GetComponent<Mouse_Move>().enabled = false;
-			PauseUI.SetActive(true);
+			PauseUI.GetComponent<Canvas>().enabled = true;
 			IsPaused = true;
 		}
 		else if (Input.GetButtonDown("Pause") && (IsPaused))
@@ -30,7 +31,7 @@ public class PauseGameScript : MonoBehaviour
 			// resumes the game
 			Time.timeScale = 1;
 			GetComponent<Mouse_Move>().enabled = true;
-			PauseUI.SetActive(false);
+			PauseUI.GetComponent<Canvas>().enabled = false;
 			IsPaused = false;
 		}
 	}
@@ -44,6 +45,8 @@ public class PauseGameScript : MonoBehaviour
 	public void Menu()
 	{
 		SceneManager.LoadSceneAsync(0);
+		Cursor.visible = true;
+		Time.timeScale = 1;
 	}
 
 	public void Quit()
