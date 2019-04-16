@@ -20,6 +20,22 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     public PlayerController PlayerController;
     [Tooltip("Drag the players model here")]
     public NPCInteractionScrpt NPCInteractionScrpt;
+    [Tooltip("Drag the inventory gameobject here")]
+    public InventoryScript InventoryScript;
+
+    [Header("Inventory Items")]
+    [Tooltip("Drag the handcuff keys here")]
+    public Item HandcuffKeys;
+    [Tooltip("Drag the handcuffs here")]
+    public Item Handcuffs;
+    [Tooltip("Drag the crystalball here")]
+    public Item CrystalBall;
+
+    [Header("Event Cameras")]
+    [Tooltip("Drag the PlayerCamera gameobject here")]
+    public GameObject PlayerCamera;
+    [Tooltip("Drag the UpperFoyerEventCamera gameobject here")]
+    public GameObject UpperFoyerEventCamera;
 
     private bool StartEvent = false;
 
@@ -40,8 +56,11 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     public GameObject Node1Marker;
     public Vector3 Node1Pos;
     [Tooltip("How far the player will walk away from the policeman")]
-    public GameObject NodeMarker2;
+    public GameObject Node2Marker;
     public Vector3 Node2Pos;
+    [Tooltip("Exit position for npc characters")]
+    public GameObject Node3Marker;
+    public Vector3 Node3Pos;
 
     public float ProneValue;
 
@@ -49,6 +68,11 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     private bool PWalkAway;
     private bool Arrest;
     private bool OcultistTalk;
+    private bool GiveHandcuffs;
+    private bool GiveHandcuffKeys;
+    private bool TakeCrystalBall;
+    private bool OcultistWalkAway;
+    private bool EventEnd;
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +93,7 @@ public class UpperFoyerEventScrpt : MonoBehaviour
             LockInputs();
 
             // Switch to wide angle camera 
+            SwitchToWideShot();
 
             GoToPosition(PlayerNavAgent, Node1Pos); // Player walks into the room
 
@@ -76,10 +101,36 @@ public class UpperFoyerEventScrpt : MonoBehaviour
 
             NPCInteractionScrpt.StartInteraction(); // Start dialogue with the policeman
 
+            // Dialogue with policeman ends and he walks off
+
+            GoToPosition(PoliceNavAgent, Node3Pos);
+
+            if (PoliceNavAgent.transform.position == Node3Pos)
+            {
+                Policeman.SetActive(false);
+
+                // Ocultist waks upto player
+                RunAtCharacter(OcultistNavAgent, PlayerNavAgent.transform.position);
+
+            }
+
+            // if ocultist is infront of player start talking
+            if (OcultistNavAgent.transform.position == new Vector3(PlayerNavAgent.transform.position.x + StoppingDistance, PlayerNavAgent.transform.position.y + StoppingDistance, PlayerNavAgent.transform.position.z + StoppingDistance))
+            {
+                ChangeOcultistTalkBool();
+            }
+
             if (OcultistTalk)
             {
                 // Switch back to player camera 
+                SwitchToCloseUp();
                 NPCInteractionScrpt.StartInteraction(Occultist);
+            }
+
+            if (EventEnd)
+            {
+                ChangeProneBool();
+                UnlockInputs();
             }
 
         }
@@ -116,6 +167,8 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     public void UpdateNodePositions()
     {
         Node1Pos = Node1Marker.transform.position;
+        Node2Pos = Node2Marker.transform.position;
+        Node3Pos = Node3Marker.transform.position;
     }
 
     public void CheckBools()
@@ -143,6 +196,54 @@ public class UpperFoyerEventScrpt : MonoBehaviour
             RunAtCharacter(PoliceNavAgent, PlayerNavAgent.transform.position);
             ChangeArrestBool();
         }
+
+        if (GiveHandcuffKeys)
+        {
+            ChangeHandcuffKeysBool();
+            InventoryScript.AddItem(HandcuffKeys);
+        }
+
+        if (GiveHandcuffs)
+        {
+            ChangeHandcuffsBool();
+            InventoryScript.AddItem(Handcuffs);
+        }
+
+        if (TakeCrystalBall)
+        {
+            ChangeCrystalBallBool();
+            InventoryScript.RemoveItem(CrystalBall);
+        }
+
+        if (OcultistWalkAway)
+        {
+            GoToPosition(OcultistNavAgent, Node3Pos);
+            if (OcultistNavAgent.transform.position == Node3Pos)
+            {
+                Occultist.SetActive(false);
+                ChangeOcultistWalkAwayBool();
+            }
+        }
+    }
+
+    public void ChangeOcultistTalkBool()
+    {
+        OcultistTalk = !OcultistTalk;
+    }
+
+    public void ChangeCrystalBallBool()
+    {
+        TakeCrystalBall = !TakeCrystalBall;
+    }
+
+    public void ChangeHandcuffsBool()
+    {
+        GiveHandcuffs = !GiveHandcuffs;
+    }
+
+    public void ChangeHandcuffKeysBool()
+    {
+        GiveHandcuffKeys = !GiveHandcuffKeys;
     }
 
     public void ChangeProneBool()
@@ -163,5 +264,22 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     public void TalkWithOcultist()
     {
         OcultistTalk = true;
+    }
+
+    public void ChangeOcultistWalkAwayBool()
+    {
+        OcultistWalkAway = !OcultistWalkAway;
+    }
+
+    public void SwitchToWideShot()
+    {
+        UpperFoyerEventCamera.SetActive(true);
+        PlayerCamera.SetActive(false);
+    }
+
+    public void SwitchToCloseUp()
+    {
+        PlayerCamera.SetActive(true);
+        UpperFoyerEventCamera.SetActive(false);
     }
 }

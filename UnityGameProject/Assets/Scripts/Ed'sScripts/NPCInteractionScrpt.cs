@@ -5,7 +5,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum UFEBools { Prone, PWalkAway, Arrest}
+public enum UFEBools { Prone, PWalkAway, Arrest, OcultistTalk, GiveHandcuffs, GiveHandcuffKeys, TakeCrystalBall}
 
 public class NPCInteractionScrpt : MonoBehaviour
 {
@@ -534,21 +534,25 @@ public class NPCInteractionScrpt : MonoBehaviour
                         case UFEBools.Arrest:
                             T.ChangeArrestBool();
                             break;
+
+                        case UFEBools.OcultistTalk:
+                            T.ChangeOcultistTalkBool();
+                            break;
+
+                        case UFEBools.GiveHandcuffs:
+                            T.ChangeHandcuffsBool();
+                            break;
+
+                        case UFEBools.GiveHandcuffKeys:
+                            T.ChangeHandcuffKeysBool();
+                            break;
+
+                        case UFEBools.TakeCrystalBall:
+                            T.ChangeCrystalBallBool();
+                            break;
                     }
                 }
             }
-
-            ////AccessedScript = GameObject.FindObjectsOfType<ScriptNameAsT>();
-
-            //// Uses values of string ScriptName & string BoolName to find needed script
-            //AccessedScript = GameObject.Find(ScriptName); // find the script with the name we want
-            //Debug.Log("Name of script: " + AccessedScript);
-
-            //BoolToChange = AccessedScript.GetComponent(BoolName); // Find the bool we want
-            //Debug.Log("Bool value before: " + BoolToChange);
-            //BoolToChange = true; // Change the bool
-            //Debug.Log("Bool value after: " + BoolToChange);
-
         }
 
         else if (ActionInfo.Contains("[false]"))
@@ -587,18 +591,21 @@ public class NPCInteractionScrpt : MonoBehaviour
                         case UFEBools.Arrest:
                             T.ChangeArrestBool();
                             break;
+
+                        case UFEBools.OcultistTalk:
+                            T.ChangeOcultistTalkBool();
+                            break;
+
+                        case UFEBools.GiveHandcuffs:
+                            T.ChangeHandcuffsBool();
+                            break;
+
+                        case UFEBools.GiveHandcuffKeys:
+                            T.ChangeHandcuffKeysBool();
+                            break;
                     }
                 }
             }
-
-            //// Uses values of string ScriptName & string BoolName to find needed script
-            //AccessedScript = GameObject.Find(ScriptName); // find the script with the name we want
-            //Debug.Log("Name of script: " + AccessedScript);
-
-            //BoolToChange = AccessedScript.GetComponent(BoolName); // Find the bool we want
-            //Debug.Log("Bool value before: " + BoolToChange);
-            //BoolToChange = false; // Change the bool
-            //Debug.Log("Bool value after: " + BoolToChange);
         }
     }
 }

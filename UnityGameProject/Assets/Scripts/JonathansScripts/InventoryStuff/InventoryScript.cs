@@ -156,8 +156,38 @@ public class InventoryScript : MonoBehaviour
 		}
 	}
 
+    // Added by Ed ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public void RemoveItem(Item Input)
+    {
+        for (int i = 0; i < items.Length; i++)                  // For each slot in the inventory
+        {
+            if (items[i] == Input)                              // Check to see if the item inputted is in the inventory
+            {
+                items[i].gameObject.transform.position = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<ThrowableItemScript>().gameObject.transform.position;
+                items[i].transform.SetParent(null);
+                items[i].gameObject.SetActive(true);
 
-	public void ClearInv()
+                if (!items[i].gameObject.GetComponent<Rigidbody>())
+                {
+                    items[i].gameObject.AddComponent<Rigidbody>();
+                }
+
+                items[i].gameObject.GetComponent<Item>().enabled = true;
+                items[i] = null;                                        // removes the item from the inventory returning it to null
+                ItemImages[i].sprite = null;                           // removes the image for the inventory slot, reutrning it to null
+                ItemImages[i].enabled = false;
+
+                Input = null;
+                SelectedText.text = "";
+                ItemImages[i].gameObject.transform.parent.GetComponentInChildren<Image>().color = Color.white;
+
+                break;
+            }
+        }
+    }
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    public void ClearInv()
 	{
 		for (int i = 0; i < items.Length; i++)
 		{
