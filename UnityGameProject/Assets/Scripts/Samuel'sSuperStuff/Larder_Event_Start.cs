@@ -26,7 +26,8 @@ public class Larder_Event_Start : MonoBehaviour
             Debug.Log("running");
             //anim.SetBool("IsWalking", false);
             MovementScript.enabled = false;
-            stopMouse.enabled = false;            
+            stopMouse.enabled = false;
+            AIMovment.enabled = true;
             Event = true;
 
             MovementScript.gameObject.GetComponent<Stats>().Health -= 2;
