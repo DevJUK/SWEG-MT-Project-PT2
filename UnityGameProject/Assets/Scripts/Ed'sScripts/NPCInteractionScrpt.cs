@@ -5,7 +5,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum UFEBools { Prone, PWalkAway, Arrest, OcultistTalk, GiveHandcuffs, GiveHandcuffKeys, TakeCrystalBall}
+public enum UFEBools { Prone, PWalkAway, Arrest, OcultistTalk, GiveHandcuffs, GiveHandcuffKeys, TakeCrystalBall, PolicemanTalking}
 
 public class NPCInteractionScrpt : MonoBehaviour
 {
@@ -549,6 +549,10 @@ public class NPCInteractionScrpt : MonoBehaviour
 
                         case UFEBools.TakeCrystalBall:
                             T.ChangeCrystalBallBool();
+                            break;
+
+                        case UFEBools.PolicemanTalking:
+                            T.ChangePolicemanTalkingBool();
                             break;
                     }
                 }
