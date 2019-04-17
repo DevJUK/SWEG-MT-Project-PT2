@@ -96,16 +96,18 @@ public class UpperFoyerEventScrpt : MonoBehaviour
         WalkUpToPlayer = true;
     }
 
+    public void FixedUpdate()
+    {
+        CheckBools();
+    }
     // Update is called once per frame
     void Update()
     {
         UpdateNodePositions(); // Used to see where the characters will move to 
-        CheckBools();
+
 
         if (StartEvent)
         {
-            
-
             LockInputs();
 
             // Switch to wide angle camera 
@@ -130,7 +132,7 @@ public class UpperFoyerEventScrpt : MonoBehaviour
 
             if (PoliceNavAgent.transform.position == new Vector3(Node4Pos.x, PoliceNavAgent.transform.position.y, Node4Pos.z))
             {
-                ChangePolicemanTalkingBool();
+                PolicemanTalking = true;
                 WalkUpToPlayer = false;
                 NPCInteractionScrpt.StartInteraction(Policeman); // Start dialogue with the policeman
             }
@@ -191,8 +193,6 @@ public class UpperFoyerEventScrpt : MonoBehaviour
 
     public void RunAtCharacter(NavMeshAgent RunningCharacter, Vector3 TargetCharacter)
     {
-        //Vector2 CharacterPos = new Vector2 (TargetCharacter.x + StoppingDistance, TargetCharacter.z + StoppingDistance);
-        //RunningCharacter.destination = CharacterPos; // Running chracter will run at target character until they reach the stopping distance
         RunningCharacter.destination = TargetCharacter;
     }
 
@@ -211,8 +211,10 @@ public class UpperFoyerEventScrpt : MonoBehaviour
 
     public void CheckBools()
     {
+        Debug.Log("Check Bools");
         if (PWalkAway)
         {
+            Debug.Log("PWalkAway: " + PWalkAway);
             GoToPosition(PlayerNavAgent, Node2Pos); // Runs the player character to node 2 
 
             // Turn off animations when chracter gets to node

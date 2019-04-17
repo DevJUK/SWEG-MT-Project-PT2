@@ -253,6 +253,7 @@ public class NPCInteractionScrpt : MonoBehaviour
             {
                 Debug.Log("Performing Action");
                 PerformAction();
+                DialoguePath++;
             }
 
             else if (DialogueValue.Contains("#TConfirm:")) // Used to ask the player if they want to trade (could be expanded later to enable support for multiple dialogue options)
@@ -496,7 +497,7 @@ public class NPCInteractionScrpt : MonoBehaviour
 
         ActionInfo = System.Convert.ToString(DialogueValue.Remove(0, 11)); // This bit is just removing the "DoAction:" part that will always be at the start
 
-        Debug.Log("Do action string acter remove: " + ActionInfo);
+        Debug.Log("Do action string after remove: " + ActionInfo);
 
         if (ActionInfo.Contains("[true]"))
         {
