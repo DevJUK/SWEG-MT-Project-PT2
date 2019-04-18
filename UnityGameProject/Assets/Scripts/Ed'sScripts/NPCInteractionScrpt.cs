@@ -5,7 +5,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum UFEBools { Prone, PWalkAway, Arrest, OcultistTalk, GiveHandcuffs, GiveHandcuffKeys, TakeCrystalBall, PolicemanTalking}
+public enum UFEBools { Prone, PWalkAway, Arrest, OcultistTalk, GiveHandcuffs, GiveHandcuffKeys, TakeCrystalBall, PolicemanTalking, OcultistWalkAway, EventEnd }
 
 public class NPCInteractionScrpt : MonoBehaviour
 {
@@ -519,7 +519,7 @@ public class NPCInteractionScrpt : MonoBehaviour
                     UpperFoyerEventScrpt T = item as UpperFoyerEventScrpt;
 
                     UFEBools parsed_enum = (UFEBools)System.Enum.Parse(typeof(UFEBools), BoolName); // Converting string to enum so switch can be set
-                    Debug.Log("Bool name: " + BoolName + "Parsed enum: " + parsed_enum);
+                    Debug.Log("Bool name: " + BoolName + " Parsed enum: " + parsed_enum);
 
                     UFESwitch = parsed_enum;
                     switch (UFESwitch)
@@ -555,6 +555,14 @@ public class NPCInteractionScrpt : MonoBehaviour
                         case UFEBools.PolicemanTalking:
                             T.ChangePolicemanTalkingBool();
                             break;
+
+                        case UFEBools.OcultistWalkAway:
+                            T.ChangeOcultistWalkAwayBool();
+                            break;
+
+                        case UFEBools.EventEnd:
+                            T.ChangeEventEndBool();
+                            break;
                     }
                 }
             }
@@ -562,10 +570,10 @@ public class NPCInteractionScrpt : MonoBehaviour
 
         else if (ActionInfo.Contains("[false]"))
         {
-            Debug.Log("String contains false");
-            ActionInfo.Replace("[false]", string.Empty); // Removing the true/false part to just leave the name of the bool being targeted
+            Debug.Log("String contains true");
+            ActionInfo = ActionInfo.Replace("[false]", string.Empty); // Removing the true/false part to just leave the name of the bool being targeted
 
-            Debug.Log("Action Info after second remove: " + ActionInfo);
+            Debug.Log("Action Info after removing [false]: " + ActionInfo);
 
             SplitString(ActionInfo); // Split the string into two parts (Script name & Bool name)
 
@@ -580,7 +588,7 @@ public class NPCInteractionScrpt : MonoBehaviour
                     UpperFoyerEventScrpt T = item as UpperFoyerEventScrpt;
 
                     UFEBools parsed_enum = (UFEBools)System.Enum.Parse(typeof(UFEBools), BoolName); // Converting string to enum so switch can be set
-                    Debug.Log("Bool name: " + BoolName + "Parsed enum: " + parsed_enum);
+                    Debug.Log("Bool name: " + BoolName + " Parsed enum: " + parsed_enum);
 
                     UFESwitch = parsed_enum;
                     switch (UFESwitch)
@@ -607,6 +615,14 @@ public class NPCInteractionScrpt : MonoBehaviour
 
                         case UFEBools.GiveHandcuffKeys:
                             T.ChangeHandcuffKeysBool();
+                            break;
+
+                        case UFEBools.TakeCrystalBall:
+                            T.ChangeCrystalBallBool();
+                            break;
+
+                        case UFEBools.PolicemanTalking:
+                            T.ChangePolicemanTalkingBool();
                             break;
                     }
                 }

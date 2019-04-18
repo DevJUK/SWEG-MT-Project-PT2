@@ -69,9 +69,12 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     [Tooltip("Exit position for npc characters")]
     public GameObject Node3Marker;
     public Vector3 Node3Pos;
-    [Tooltip("Exit position for npc characters")]
+    [Tooltip("Policeman stopping position")]
     public GameObject Node4Marker;
     public Vector3 Node4Pos;
+    [Tooltip("Policeman aresting position")]
+    public GameObject Node5Marker;
+    public Vector3 Node5Pos;
 
     public float ProneValue;
 
@@ -86,6 +89,8 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     private bool EventEnd;
     private bool PolicemanTalking;
     private bool WalkUpToPlayer;
+    private bool PlayerEnterRoom;
+    private bool WideShot;
 
     // Start is called before the first frame update
     void Start()
@@ -94,6 +99,9 @@ public class UpperFoyerEventScrpt : MonoBehaviour
         PoliceNavAgent = GameObject.Find("Douglas@Idle").GetComponent<NavMeshAgent>();
         OcultistNavAgent = GameObject.Find("Miranda").GetComponent<NavMeshAgent>();
         WalkUpToPlayer = true;
+        PlayerEnterRoom = true;
+        EventEnd = false;
+        Arrest = false;
     }
 
     public void FixedUpdate()
@@ -108,13 +116,24 @@ public class UpperFoyerEventScrpt : MonoBehaviour
 
         if (StartEvent)
         {
-            LockInputs();
 
             // Switch to wide angle camera 
-            SwitchToWideShot();
+            if (WideShot)
+            {
+                LockInputs();
+                SwitchToWideShot();
+            }
+            else if (!WideShot)
+            {
+                SwitchToCloseUp();
+            }
 
-            // Player walks into the room
-            GoToPosition(PlayerNavAgent, new Vector3(Node1Pos.x, PlayerNavAgent.transform.position.y, Node1Pos.z));
+            if (PlayerEnterRoom)
+            {
+                // Player walks into the room
+                GoToPosition(PlayerNavAgent, new Vector3(Node1Pos.x, PlayerNavAgent.transform.position.y, Node1Pos.z));
+                PlayerEnterRoom = false;
+            }
 
             // Turn off players animations when they reach their node
             if (PlayerNavAgent.transform.position == new Vector3(Node1Pos.x, PlayerNavAgent.transform.position.y, Node1Pos.z))
@@ -140,35 +159,46 @@ public class UpperFoyerEventScrpt : MonoBehaviour
             // Dialogue with policeman ends and he walks off
             if (!PolicemanTalking && !WalkUpToPlayer)
             {
-                GoToPosition(PoliceNavAgent, Node3Pos);
+                GoToPosition(PoliceNavAgent, new Vector3(Node3Pos.x, PoliceNavAgent.transform.position.y, Node3Pos.z));
             }
 
-            if (PoliceNavAgent.transform.position == Node3Pos)
+            if (PoliceNavAgent.transform.position == new Vector3(Node3Pos.x, PoliceNavAgent.transform.position.y, Node3Pos.z))
             {
                 Policeman.SetActive(false);
 
-                // Ocultist waks upto player
-                RunAtCharacter(OcultistNavAgent, PlayerNavAgent.transform.position);
+                // Ocultist walks upto player
+                RunAtCharacter(OcultistNavAgent, new Vector3(Node5Pos.x, OcultistNavAgent.transform.position.y, Node5Pos.z));
 
             }
 
             // if ocultist is infront of player start talking
-            if (OcultistNavAgent.transform.position == new Vector3(PlayerNavAgent.transform.position.x + StoppingDistance, PlayerNavAgent.transform.position.y + StoppingDistance, PlayerNavAgent.transform.position.z + StoppingDistance))
+            if (OcultistNavAgent.transform.position == new Vector3(Node5Pos.x, OcultistNavAgent.transform.position.y, Node5Pos.z))
             {
                 ChangeOcultistTalkBool();
             }
 
             if (OcultistTalk)
             {
-                // Switch back to player camera 
-                SwitchToCloseUp();
+                WideShot = false;
+                if (!WideShot)
+                {
+                    SwitchToCloseUp();
+                }
                 NPCInteractionScrpt.StartInteraction(Occultist);
+                PlayerNavAgent.isStopped = true;
             }
 
             if (EventEnd)
             {
-                ChangeProneBool();
                 UnlockInputs();
+
+                Debug.Log("Event end: " + EventEnd);
+                if (OcultistNavAgent.transform.position == new Vector3(Node3Pos.x, OcultistNavAgent.transform.position.y, Node3Pos.z))
+                {
+                    Occultist.SetActive(false);
+                    ChangeProneBool();
+                }
+
             }
 
         }
@@ -177,6 +207,7 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         StartEvent = true;
+        WideShot = true;
     }
 
     public void LockInputs()
@@ -187,6 +218,7 @@ public class UpperFoyerEventScrpt : MonoBehaviour
 
     public void UnlockInputs()
     {
+        Debug.Log("Unlock Input");
         Mouse_Move.enabled = true; // Allow the player to be able to look around
         PlayerController.enabled = true; // Allow the player to be able to walk around
     }
@@ -207,6 +239,7 @@ public class UpperFoyerEventScrpt : MonoBehaviour
         Node2Pos = Node2Marker.transform.position;
         Node3Pos = Node3Marker.transform.position;
         Node4Pos = Node4Marker.transform.position;
+        Node5Pos = Node5Marker.transform.position;
     }
 
     public void CheckBools()
@@ -226,23 +259,34 @@ public class UpperFoyerEventScrpt : MonoBehaviour
             ChangePWalkAwayBool();
         }
 
-        if (Prone)
-        {
-            // Cheating and just lowering the chracter into the floor
-            Player.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y - ProneValue, Player.transform.position.z);
-        }
+        //if (Arrest && Prone)
+        //{
+        //    // Cheating and just lowering the chracter into the floor
+        //    Debug.Log("Going prone");
+        //    Player.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y - ProneValue, Player.transform.position.z);
+        //}
 
-        if (!Prone)
-        {
-            Player.transform.position = Player.transform.position;
-        }
+        //if (Prone && !Arrest)
+        //{
+        //    Player.transform.position = Player.transform.position;
+        //}
 
         if (Arrest)
         {
+            RunAtCharacter(PoliceNavAgent, Node5Pos);
+
             // do stuff for being arrested
-            RunAtCharacter(PoliceNavAgent, PlayerNavAgent.transform.position);
-            ChangeArrestBool();
+            if (PoliceNavAgent.transform.position == new Vector3(Node5Pos.x, PoliceNavAgent.transform.position.y, Node5Pos.z))
+            {
+                ChangeProneBool();
+                Arrest = false;
+            }
         }
+
+        //if (!Arrest)
+        //{
+        //    ChangeProneBool();
+        //}
 
         if (GiveHandcuffKeys)
         {
@@ -264,8 +308,8 @@ public class UpperFoyerEventScrpt : MonoBehaviour
 
         if (OcultistWalkAway)
         {
-            GoToPosition(OcultistNavAgent, Node3Pos);
-            if (OcultistNavAgent.transform.position == Node3Pos)
+            GoToPosition(OcultistNavAgent, new Vector3(Node3Pos.x, OcultistNavAgent.transform.position.y, Node3Pos.z));
+            if (OcultistNavAgent.transform.position == new Vector3(Node3Pos.x, OcultistNavAgent.transform.position.y, Node3Pos.z))
             {
                 Occultist.SetActive(false);
                 ChangeOcultistWalkAwayBool();
@@ -321,6 +365,11 @@ public class UpperFoyerEventScrpt : MonoBehaviour
     public void ChangePolicemanTalkingBool()
     {
         PolicemanTalking = !PolicemanTalking;
+    }
+
+    public void ChangeEventEndBool()
+    {
+        EventEnd = !EventEnd;
     }
 
     // Camera Stuff
