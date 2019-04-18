@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -30,6 +31,11 @@ public class PlayerController : MonoBehaviour
          MoveDir = transform.TransformDirection(MoveDir);            
 
        
+		 if (Input.GetKey(KeyCode.R))
+		 {
+			Scene ThisLevel = SceneManager.GetActiveScene();
+			SceneManager.LoadScene(ThisLevel.name);
+		}
 
          //if (Input.GetButton("Jump"))
          //{

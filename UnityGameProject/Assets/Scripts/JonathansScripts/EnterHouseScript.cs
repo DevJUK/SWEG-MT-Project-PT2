@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class EnterHouseScript : MonoBehaviour
 {
-	public GameObject Darkness;
+	//public GameObject Darkness;
 
 	public enum Rooms
 	{
@@ -16,8 +16,11 @@ public class EnterHouseScript : MonoBehaviour
 
 	public Rooms Scenes;
 
+
 	private void OnCollisionEnter(Collision collision)
 	{
+		//Darkness = collision.gameObject.transform.Find("Darkness").gameObject;
+
 		switch (Scenes)
 		{
 			case Rooms.Outside:
@@ -25,21 +28,21 @@ public class EnterHouseScript : MonoBehaviour
 			case Rooms.Ground:
 				if ((collision.gameObject.tag == "Player"))
 				{
-					Darkness.GetComponent<FadeTransitionScript>().GoDark();
+					//Darkness.GetComponent<FadeTransitionScript>().GoDark();
 					SceneManager.LoadScene("GroundFloorScene");
 				}
 				break;
 			case Rooms.Upper:
 				if ((collision.gameObject.tag == "Player"))
 				{
-					Darkness.GetComponent<FadeTransitionScript>().GoDark();
+					//Darkness.GetComponent<FadeTransitionScript>().GoDark();
 					SceneManager.LoadScene("UpperFloorScene");
 				}
 				break;
 			case Rooms.Basement:
 				if ((collision.gameObject.tag == "Player"))
 				{
-					Darkness.GetComponent<FadeTransitionScript>().GoDark();
+					//Darkness.GetComponent<FadeTransitionScript>().GoDark();
 					SceneManager.LoadScene("BasementScene");
 				}
 				break;
